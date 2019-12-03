@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginAuth } from '../entities/loginAuth';
+import { Store } from '@ngxs/store';
+import { Login } from 'src/shared/loginAuth.actions';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginAuth = new LoginAuth();
+
+  constructor(private store: Store) { }
 
   ngOnInit() {
+    this.store.dispatch(new Login(this.loginAuth));
   }
+
+  formSubmit(){}
 
 }
