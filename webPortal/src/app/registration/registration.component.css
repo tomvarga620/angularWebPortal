@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Tomorrow&display=swap');
+
+.wrapper{
+    width:100%;
+    height:100%;
+    background:black;
+    display:grid;
+    grid-template-columns:1fr 350px 1fr; 
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    ". . ."
+    ". regForm .";
+}
+
+.regForm{
+    grid-area:regForm;
+    background:black;
+    border:1px solid white;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+   /* justify-content: space-evenly; */
+    width:350px;
+    height:500px;
+}
+
+.regForm h1 {
+    color:white;
+    font-size:50px;
+    padding:0;
+    margin:0;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+.regForm input[type=text],input[type="password"],input[type="email"] {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 0;
+    outline: 0;
+    font-size:15px;
+    background: transparent;
+    color:white;
+    border-bottom: 1.5px solid white;
+    margin-top:30px;
+  }
+
+.regForm input[type="submit"]{
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+    padding:12px;
+    width:30%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top:40px;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+.regForm input[type="submit"]:hover{
+    background:white;
+    border: 2px solid black;
+    color:black;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    font-size:15px;
+    font-family: 'Tomorrow', sans-serif;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-size:15px;
+    font-family: 'Tomorrow', sans-serif;
+    color: white;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    font-size:15px;
+    font-family: 'Tomorrow', sans-serif;
+    color: white;
+  }

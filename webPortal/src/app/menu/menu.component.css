@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Tomorrow&display=swap');
+
 a{
     text-decoration: none;
     color:inherit;
 }
 
 nav {
-    background:red;
+    background:black;
+    font-family: 'Tomorrow', sans-serif;
+    border-bottom: 2px solid white;
+    color:white;
 }
 
 nav ul {
