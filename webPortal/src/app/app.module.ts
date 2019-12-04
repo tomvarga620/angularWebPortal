@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule } from '@angular/forms';
 import { AppNgxsModule } from './app.ngxs.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AppNgxsModule } from './app.ngxs.module';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    AppNgxsModule
+    AppNgxsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

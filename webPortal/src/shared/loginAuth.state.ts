@@ -1,5 +1,3 @@
-
-import { LoginAuthModel } from './loginAuth.state';
 import { Login } from './loginAuth.actions';
 import { State, Action, StateContext } from '@ngxs/store';
 
@@ -9,7 +7,7 @@ export interface LoginAuthModel {
 }
 
 @State<LoginAuthModel>({
-    name: 'loginAuth',
+    name: 'login',
     defaults: {
         username: null,
         token: null
@@ -24,5 +22,4 @@ export class LoginAuthState {
             token: Math.floor(Math.random() * 100000) + ''
         });
     }
-
 }
