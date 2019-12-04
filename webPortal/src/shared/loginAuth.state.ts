@@ -1,6 +1,7 @@
 import { Login, Logout } from './loginAuth.actions';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { UserServerService } from '../service.user-server/user-server.service';
+import { tap } from 'rxjs/operators';
 
 export interface LoginAuthModel {
     username: string;
@@ -22,16 +23,19 @@ export class LoginAuthState {
         return current.username;
     }
 
+    constructor(private userServerService: UserServerService) {}
 
     @Action(Login)
     login(ctx: StateContext<LoginAuthModel>, action: Login) {
-        ctx.setState({
-            username: action.loginAuth.username,
-            token: Math.floor(Math.random() * 100000) + ''
-        });
+        return this.userServerService.login(action.loginAuth).pipe(
+            tap(token => {
+                ctx.setState({
+                    username: action.loginAuth.username,
+                    token
+                });
+            })
+        );
     }
-
-    constructor(private userServerService: UserServerService) {}
 
     @Action(Logout)
     logout(ctx: StateContext<LoginAuthModel>, action: Logout) {
@@ -40,5 +44,4 @@ export class LoginAuthState {
             token: null
         });
     }
-
 }
