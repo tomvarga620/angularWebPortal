@@ -17,7 +17,7 @@ export class UserServerService {
   }
 
   logout(): Observable<void> {
-    return this.http.get(this.url + 'logout/' + this.token)
+    return this.http.get(this.url + 'logout' + this.token)
     .pipe(mapTo(undefined),
     catchError(error => this.httpErrorProcess(error)));
   }

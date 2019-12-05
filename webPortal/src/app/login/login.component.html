@@ -1,5 +1,5 @@
 <section class="wrapper">
-    <form (ngSubmit) = "formSubmit" class="loginForm" #form = "ngForm">
+    <form (ngSubmit) = "formSubmit()" class="loginForm" #formModel = "ngForm">
 
         <h1>Login</h1>
 
@@ -13,6 +13,6 @@
          required [(ngModel)] = "loginAuth.password"
         >
         
-        <input type="submit" value="Submit" [disabled]="!form.form.valid">
+        <button type="submit" [disabled]="!formModel.form.valid">Submit</button>
     </form> 
 </section>

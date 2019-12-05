@@ -46,7 +46,7 @@
     margin-top:30px;
   }
 
-.loginForm input[type="submit"]{
+.loginForm button{
     border: 2px solid white;
     background-color: black;
     color: white;
@@ -58,7 +58,7 @@
     font-family: 'Tomorrow', sans-serif;
 }
 
-.loginForm input[type="submit"]:hover{
+.loginForm button:hover{
     background:white;
     border: 2px solid black;
     color:black;
