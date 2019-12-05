@@ -16,14 +16,16 @@ export class MenuComponent implements OnInit {
 
   @Select(LoginAuthState.username) username$;
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(private store: Store, private router: Router , private action$: Actions ) {
+    this.action$.pipe(ofActionSuccessful(Logout)).subscribe( () => this.router.navigateByUrl('login'));
+  }
 
   ngOnInit() {
-    this.store.subscribe(u => this.loggedUser = u);
+    this.store.select(LoginAuthState.username).subscribe(u => (this.loggedUser = u));
   }
 
   logout() {
-    this.store.dispatch(new Logout()).subscribe( () => this.router.navigateByUrl('/login'));
+    this.store.dispatch(new Logout());
   }
 
 }
