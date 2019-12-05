@@ -7,14 +7,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+
+@CrossOrigin
 @RestController
 public class Controller {
     private ArrayList<UserLogin> loggedUsers = new ArrayList<>();
 
-    @RequestMapping(method = RequestMethod.GET, value = "/login")
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
     @ResponseBody
     public UserLogin login(@RequestBody LoginForm loginForm) {
         UserLogin user = new UserLogin(loginForm.getEmail());
+        System.out.println("requested");
         loggedUsers.add(user);
         return user;
     }

@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
     this.store.dispatch(new Login(this.loginAuth)).subscribe(() => {
       if (this.store.selectSnapshot(LoginAuthState.username)) {
           this.router.navigateByUrl('');
-          console.log(`${this.loginAuth.username}` );
       }
     });
   }
