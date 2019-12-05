@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.store.select(LoginAuthState.username).subscribe(u => (this.loggedUser = u));
+    console.log(this.loggedUser);
   }
 
   logout() {

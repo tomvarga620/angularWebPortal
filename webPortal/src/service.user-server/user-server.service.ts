@@ -16,6 +16,12 @@ export class UserServerService {
     return this.store.selectSnapshot(state => state.login.token);
   }
 
+  logout(): Observable<void> {
+    return this.http.get(this.url + 'logout/' + this.token)
+    .pipe(mapTo(undefined),
+    catchError(error => this.httpErrorProcess(error)));
+  }
+
   login(auth: LoginAuth): Observable<string> {
     return this.http
       .post(this.url + 'login', auth, { responseType: 'text' })
@@ -49,5 +55,4 @@ export class UserServerService {
     }
    // this.messageService.sendMesage(error.message);
   }
-
 }
