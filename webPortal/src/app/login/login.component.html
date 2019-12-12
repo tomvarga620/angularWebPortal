@@ -1,15 +1,15 @@
 <section class="wrapper">
-    <form (ngSubmit) = "formSubmit()" class="loginForm" #formModel = "ngForm">
+    <form (ngSubmit) = "formSubmit()" class="loginForm" [formGroup] = "loginForm" >
 
         <h1>Login</h1>
 
         <input type="text" name="username" placeholder="Username"
          onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" 
-         required [(ngModel)] = "loginAuth.username">
+         required formControl="name" autocomplete="username">
 
         <input type="password" name="password" placeholder="Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" 
-         required [(ngModel)] = "loginAuth.password">
+        required formControl="password">
         
         <button type="submit" [disabled]="!formModel.form.valid">Submit</button>
     </form> 
