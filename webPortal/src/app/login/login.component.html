@@ -5,13 +5,11 @@
 
         <input type="text" name="username" placeholder="Username"
          onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" 
-         required [(ngModel)] = "loginAuth.username"
-         >
+         required [(ngModel)] = "loginAuth.username">
 
         <input type="password" name="password" placeholder="Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" 
-         required [(ngModel)] = "loginAuth.password"
-        >
+         required [(ngModel)] = "loginAuth.password">
         
         <button type="submit" [disabled]="!formModel.form.valid">Submit</button>
     </form> 
