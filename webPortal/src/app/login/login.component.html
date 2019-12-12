@@ -5,12 +5,15 @@
 
         <input type="text" name="username" placeholder="Username"
          onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" 
-         required formControl="name" autocomplete="username">
+         required formControlName="name" autocomplete="username">
 
         <input type="password" name="password" placeholder="Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" 
-        required formControl="password">
+        required formControlName="password">
+        <span class="errorText" *ngIf="password?.errors?.weakPassword">
+            {{password.errors.weakPassword}}
+        </span>
         
-        <button type="submit" [disabled]="!formModel.form.valid">Submit</button>
+        <button type="submit">Submit</button>
     </form> 
 </section>
