@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as zxcvbn from 'zxcvbn';
 
 @Component({
   selector: 'app-registration',

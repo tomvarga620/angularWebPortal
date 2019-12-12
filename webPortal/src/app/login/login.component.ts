@@ -4,6 +4,7 @@ import { Store } from '@ngxs/store';
 import { Login } from 'src/shared/loginAuth.actions';
 import { Router } from '@angular/router';
 import { LoginAuthState } from 'src/shared/loginAuth.state';
+import * as zxcvbn from 'zxcvbn';
 
 @Component({
   selector: 'app-login',
