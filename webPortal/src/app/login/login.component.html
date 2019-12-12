@@ -10,10 +10,10 @@
         <input type="password" name="password" placeholder="Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" 
         required formControlName="password">
-        <span class="errorText" *ngIf="password?.errors?.weakPassword">
+        <span>{{passwordMessage}}</span>
+        <span *ngIf="password?.errors?.weakPassword">
             {{password.errors.weakPassword}}
         </span>
-        
         <button type="submit">Submit</button>
     </form> 
 </section>
