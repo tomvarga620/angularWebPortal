@@ -1,17 +1,20 @@
 <section class="wrapper">
-    <form (ngSubmit) = "formSubmit()" class="loginForm" [formGroup] = "loginForm" >
+    <form (ngSubmit) = "formSubmit()" class="loginForm" [formGroup] = "loginForm">
 
         <h1>Login</h1>
 
         <input type="text" name="username" placeholder="Username"
          onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" 
-         required formControlName="name" autocomplete="username">
+         required formControlName="name" autocomplete="username"
+         [ngClass]="{'is-invalid': name.touched || name.dirty && !name.errors , 'is-valid': name.valid}"
+         >
 
         <input type="password" name="password" placeholder="Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" 
-        required formControlName="password">
+        required formControlName="password"
+        [ngClass]="{'is-invalid': password.touched || password.dirty && !password.errors , 'is-valid': password.valid}">
         <span>{{passwordMessage}}</span>
-        <span *ngIf="password?.errors?.weakPassword">
+        <span *ngIf="password?.errors? .weakPassword">
             {{password.errors.weakPassword}}
         </span>
         <button type="submit">Submit</button>

@@ -86,3 +86,11 @@
   span {
     color:white;
   }
+
+  .is-invalid {
+    border-bottom: 1.5px solid red !important;
+  }
+
+  .is-valid{
+    border-bottom: 1.5px solid white !important;
+  }
