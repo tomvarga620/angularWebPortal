@@ -5,19 +5,23 @@
 
         <input type="text" name="username" placeholder="Username" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" 
-        required formControlName = "name">
+        required formControlName = "name"
+        [ngClass]="{'is-invalid': name.touched || name.dirty && !name.errors , 'is-valid': name.valid}">
 
         <input type="email" name="email" placeholder="Email" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" 
-        required formControlName = "email">
+        required formControlName = "email"
+        [ngClass]="{'is-invalid': email.touched || email.dirty && !email.errors , 'is-valid': email.valid}">
 
         <input type="password" name="password" placeholder="Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" 
-        required formControlName = "password">
+        required formControlName = "password"
+        [ngClass]="{'is-invalid': password.touched || password.dirty && !password.errors , 'is-valid': password.valid}">
 
         <input type="password" name="password2" placeholder="Repeat your Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repeat your Password'" 
-        required formControlName = "password2">
+        required formControlName = "password2"
+        [ngClass]="{'is-invalid': password2.touched || password2.dirty && !password2.errors , 'is-valid': password2.valid}">
 
         <span>{{passwordMessage}}</span>
         <span *ngIf="password?.errors?.weakPassword">

@@ -14,7 +14,7 @@
         required formControlName="password"
         [ngClass]="{'is-invalid': password.touched || password.dirty && !password.errors , 'is-valid': password.valid}">
         <span>{{passwordMessage}}</span>
-        <span *ngIf="password?.errors? .weakPassword">
+        <span *ngIf="password?.errors?.weakPassword">
             {{password.errors.weakPassword}}
         </span>
         <button type="submit">Submit</button>
