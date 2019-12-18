@@ -6,5 +6,5 @@ export class Login {
 }
 
 export class Logout {
-    static readonly type = '[Main page] logout';
+    static readonly type = '[Navbar component] logout';
 }

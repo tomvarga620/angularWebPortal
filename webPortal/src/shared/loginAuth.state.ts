@@ -1,7 +1,7 @@
-
-import { LoginAuthModel } from './loginAuth.state';
-import { Login } from './loginAuth.actions';
-import { State, Action, StateContext } from '@ngxs/store';
+import { Login, Logout } from './loginAuth.actions';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { UserServerService } from '../service.user-server/user-server.service';
+import { tap } from 'rxjs/operators';
 
 export interface LoginAuthModel {
     username: string;
@@ -9,7 +9,7 @@ export interface LoginAuthModel {
 }
 
 @State<LoginAuthModel>({
-    name: 'loginAuth',
+    name: 'login',
     defaults: {
         username: null,
         token: null
@@ -17,12 +17,31 @@ export interface LoginAuthModel {
 })
 
 export class LoginAuthState {
-    @Action(Login)
-    login(ctx: StateContext<LoginAuthModel>, action: Login) {
-        ctx.setState({
-            username: action.loginAuth.username,
-            token: Math.floor(Math.random() * 100000) + ''
-        });
+
+    @Selector()
+    static username(current: LoginAuthModel) {
+        return current.username;
     }
 
+    constructor(private userServerService: UserServerService) {}
+
+    @Action(Login)
+    login(ctx: StateContext<LoginAuthModel>, action: Login) {
+        return this.userServerService.login(action.loginAuth).pipe(
+            tap(token => {
+                ctx.setState({
+                    username: action.loginAuth.username,
+                    token
+                });
+            })
+        );
+    }
+
+    @Action(Logout)
+    logout(ctx: StateContext<LoginAuthModel>, action: Logout) {
+        ctx.setState({
+            username: null,
+            token: null
+        });
+    }
 }

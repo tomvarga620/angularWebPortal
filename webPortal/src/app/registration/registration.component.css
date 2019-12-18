@@ -22,7 +22,7 @@
     flex-direction: column;
    /* justify-content: space-evenly; */
     width:350px;
-    height:500px;
+    height:550px;
 }
 
 .regForm h1 {
@@ -81,4 +81,16 @@
     font-size:15px;
     font-family: 'Tomorrow', sans-serif;
     color: white;
+  }
+
+  span {
+    color:white;
+  }
+
+  .is-invalid {
+    border-bottom: 1.5px solid red !important;
+  }
+
+  .is-valid{
+    border-bottom: 1.5px solid white !important;
   }

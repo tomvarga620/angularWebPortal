@@ -29,6 +29,6 @@ nav ul li {
     margin:20px;
 }
 
-a:nth-child(2){
+span {
     margin-left: auto;
 }

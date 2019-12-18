@@ -1,8 +1,19 @@
 <nav>
     <ul>
-        <a><li>Home</li></a>
-        <a routerLink="/login" routerLinkActive="active"><li>Login</li></a>
+        <a routerLink='' routerLinkActive="active"><li>Home</li></a>
+        
+        <span *ngIf="loggedUser; else elseBlock">
+                <strong>{{loggedUser}}</strong> <a [routerLink]="" (click)="logout()">Logout</a>
+        </span>
+
+        <ng-template #elseBlock>
+            <span>
+            <a routerLink="/login" routerLinkActive="active">
+                <li>Login</li>
+            </a>
+            </span>
+        </ng-template>
+
         <a routerLink="/registration" routerLinkActive="active"><li>Sign up</li></a>
     </ul>
 </nav>
-<router-outlet></router-outlet>
