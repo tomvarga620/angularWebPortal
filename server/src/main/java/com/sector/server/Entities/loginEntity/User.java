@@ -1,12 +1,21 @@
-package com.sector.server.Entities;
+package com.sector.server.Entities.loginEntity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.UUID;
 
+@Entity
 public class User {
+    @Id
+    @GeneratedValue
     private UUID id;
     private String name;
     private String password;
     private String email;
+
+    public User() {
+    }
 
     public User(String name, String password, String email) {
         this.id = UUID.randomUUID();

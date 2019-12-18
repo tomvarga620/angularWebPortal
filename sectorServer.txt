@@ -1,0 +1,73 @@
+GET /login {
+    json {
+        email: "string",
+        password: "string"
+    }
+    
+    response {
+        email: "string",
+        token: "string"
+    }
+}
+
+POST /registration {
+    json {
+        name: "string",
+        email: "string",
+        password: "string"
+    }
+    
+    response {
+        true
+    }
+}
+
+GET /logout {
+    json {
+        email: "string",
+        password: "string"
+    }
+    
+    response {
+        true
+    }
+}
+
+GET /articles {                                                                                                 
+    response {
+        [                                                                                                                                           
+            {
+                category: "string"
+                title: "string",
+                date: "string",
+                imgUrl: "string",
+                author: "string",
+                content: "string"
+            }
+        ]
+    }
+}
+
+POST /postArticle {
+    json {
+        email: "string",
+        token: "string"
+    }
+    
+    json {
+        article: {
+            id: "string",
+            category: "string",
+            title: "string",
+            date: "string",
+            imgUrl: "string",
+            author: "string",
+            content: "string"
+        }
+    }
+    
+    response {
+        response: true
+    }
+}
+

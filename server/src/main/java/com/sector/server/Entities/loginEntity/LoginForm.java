@@ -1,4 +1,4 @@
-package com.sector.server.Entities;
+package com.sector.server.Entities.loginEntity;
 
 public class LoginForm {
     private String email;
