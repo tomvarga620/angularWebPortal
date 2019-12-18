@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, ValidatorFn, AbstractControl, ValidationErrors, Validators } from '@angular/forms';
 import * as zxcvbn from 'zxcvbn';
+import { User } from '../entities/User';
+import { UserServerService } from '../../service.user-server/user-server.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +14,7 @@ export class RegistrationComponent implements OnInit {
 
   passwordMessage = '';
 
-  constructor() { }
+  constructor(private userServerService: UserServerService, private router: Router) { }
 
   regForm = new FormGroup({
 
@@ -45,7 +48,15 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
   }
 
-  formSubmit() {}
+  formSubmit() {
+    const user = new User(
+      this.name.value,
+      this.email.value,
+      this.password.value
+    );
+    return this.userServerService.register(user)
+    .subscribe(() => this.router.navigateByUrl('/login'));
+  }
 
   passValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors => {

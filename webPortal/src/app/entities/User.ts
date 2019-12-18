@@ -1,4 +1,4 @@
-export class RegisterAuth {
+export class User {
     public constructor(
         public username: string = '' ,
         public email: string = '',

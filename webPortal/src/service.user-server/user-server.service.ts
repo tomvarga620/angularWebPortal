@@ -3,7 +3,8 @@ import { Store } from '@ngxs/store';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { EMPTY, Observable, throwError } from 'rxjs';
 import { LoginAuth } from 'src/app/entities/loginAuth';
-import { catchError, mapTo } from 'rxjs/operators';
+import { catchError, mapTo, tap } from 'rxjs/operators';
+import { User } from '../app/entities/User';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,13 @@ export class UserServerService {
     return this.http.get(this.url + 'logout' + this.token)
     .pipe(mapTo(undefined),
     catchError(error => this.httpErrorProcess(error)));
+  }
+
+  register(user: User): Observable<User> {
+    return this.http.post<User>(this.url + 'register', user)
+    .pipe(
+      catchError(error => this.httpErrorProcess(error))
+    );
   }
 
   login(auth: LoginAuth): Observable<string> {
