@@ -16,12 +16,14 @@
         <input type="password" name="password" placeholder="Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" 
         required formControlName = "password"
-        [ngClass]="{'is-invalid': password.touched || password.dirty && !password.errors , 'is-valid': password.valid}">
+        [class.is-invalid]="password.touched || password.dirty && !password.errors "
+        [class.is-valid]="password.valid">
 
         <input type="password" name="password2" placeholder="Repeat your Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repeat your Password'" 
         required formControlName = "password2"
-        [ngClass]="{'is-invalid': password2.touched || password2.dirty && !password2.errors , 'is-valid': password2.valid}">
+        [class.is-invalid]="password2.touched || password2.dirty && !password2.errors "
+        [class.is-valid]="password2.valid">
 
         <span>{{passwordMessage}}</span>
         <span *ngIf="password?.errors?.weakPassword">
