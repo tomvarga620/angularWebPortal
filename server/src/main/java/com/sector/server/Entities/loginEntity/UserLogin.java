@@ -47,6 +47,14 @@ public class UserLogin {
     }
 
     @Override
+    public String toString() {
+        return "UserLogin{" +
+                "token=" + token +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = token != null ? token.hashCode() : 0;
         result = 31 * result + (email != null ? email.hashCode() : 0);

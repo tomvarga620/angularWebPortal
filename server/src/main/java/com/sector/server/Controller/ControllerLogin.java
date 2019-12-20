@@ -11,20 +11,20 @@ import java.util.ArrayList;
 
 @RestController
 public class ControllerLogin {
-    private ArrayList<UserLogin> loggedUsers = LoggedUsers.getInstance().getClass().ge;
+    private static LoggedUsers loggedUsers = LoggedUsers.getInstance();
+    private static ArrayList<UserLogin> loggedUsersArray = loggedUsers.getLoggedUsersArray();
 
     @Autowired
     private UserDao userDao;
-
 
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     @ResponseBody
     public UserLogin login(@RequestBody LoginForm loginForm) {
         if (userDao.findByEmailAndAndPassword(loginForm.getEmail(), loginForm.getPassword()) != null) {
-            if (loggedUsers.contains(loginForm))
-                loggedUsers.remove(loginForm);
+            if (loggedUsersArray.contains(loginForm))
+                loggedUsersArray.remove(loginForm);
             UserLogin user = new UserLogin(loginForm.getEmail());
-            loggedUsers.add(user);
+            loggedUsersArray.add(user);
             return user;
         } else
             return null;
@@ -42,18 +42,17 @@ public class ControllerLogin {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getLoggedUsers")
     public ArrayList<UserLogin> getLoggedUsers() {
-        return loggedUsers;
+        return loggedUsersArray;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/logout")
     public boolean logout(@RequestBody UserLogin login) {
-        for (UserLogin u: loggedUsers) {
+        for (UserLogin u: loggedUsersArray) {
             if (u.equals(login)) {
-                loggedUsers.remove(login);
+                loggedUsersArray.remove(login);
                 return true;
             }
         }
-
         return false;
     }
 }

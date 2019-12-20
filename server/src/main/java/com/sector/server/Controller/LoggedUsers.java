@@ -1,15 +1,15 @@
 package com.sector.server.Controller;
 
 import com.sector.server.Entities.loginEntity.UserLogin;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
 public class LoggedUsers {
-    private static ArrayList<UserLogin> loggedUsersArray;
+    private static ArrayList<UserLogin> loggedUsersArray = new ArrayList<>();
     private static LoggedUsers loggedUsers = null;
 
     private LoggedUsers() {
+        loggedUsersArray = new ArrayList<>();
     }
 
     public static LoggedUsers getInstance() {
@@ -19,7 +19,7 @@ public class LoggedUsers {
         return loggedUsers;
     }
 
-    public static ArrayList<UserLogin> getLoggedUsersArray() {
+    public ArrayList<UserLogin> getLoggedUsersArray() {
         return loggedUsersArray;
     }
 }
