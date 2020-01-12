@@ -4,13 +4,15 @@ import * as zxcvbn from 'zxcvbn';
 import { User } from '../entities/User';
 import { UserServerService } from '../../service.user-server/user-server.service';
 import { Router } from '@angular/router';
+import { CanDeactivateComponent } from '../guard/deactivate-guard.guard';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit,CanDeactivateComponent {
 
   passwordMessage = '';
 
@@ -66,6 +68,14 @@ export class RegistrationComponent implements OnInit {
       this.passwordMessage = message;
       return passTest.score > 3 ? { weakPassword : message} : null;
     };
+  }
+
+  canDeactivate(): boolean | Observable<boolean> {
+      console.log("Guard Ide");
+      /*const result = window.confirm("Nie je vyplnené všetko, chceš odísť?");
+      return result;
+      */
+     return true;
   }
 
 }

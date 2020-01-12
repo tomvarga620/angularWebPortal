@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(private store: Store, private router: Router) { }
 
   loginForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    password: new FormControl('', this.passValidator())
+    name: new FormControl('', [Validators.required]),
+    password: new FormControl('',Validators.required)
   });
 
   ngOnInit() {
@@ -36,15 +36,12 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  formSubmit() {}
-
-  passValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors => {
-      const passTest = zxcvbn(control.value);
-      const message = `Password strength / 4 - must be 3 or 4,
-      ${passTest.feedback.warning}`;
-      this.passwordMessage = message;
-      return passTest.score > 3 ? { weakPassword : message} : null;
-    };
+  formSubmit() {
+    this.store.dispatch(new Login(this.loginAuth)).subscribe(() => {
+      if (this.store.selectSnapshot(LoginAuthState.username)) {
+          console.log('login succesfull');
+          this.router.navigateByUrl('/');
+      }
+    });
   }
 }

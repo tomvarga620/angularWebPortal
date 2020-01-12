@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ControllerLogin {
     private static LoggedUsers loggedUsers = LoggedUsers.getInstance();
@@ -17,7 +18,7 @@ public class ControllerLogin {
     @Autowired
     private UserDao userDao;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/login")
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
     @ResponseBody
     public UserLogin login(@RequestBody LoginForm loginForm) {
         if (userDao.findByEmailAndAndPassword(loginForm.getEmail(), loginForm.getPassword()) != null) {
@@ -30,7 +31,7 @@ public class ControllerLogin {
             return null;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/register")
+    @RequestMapping(method = RequestMethod.POST, value = "/register")
     public boolean register(@RequestBody User user) {
         if (userDao.findByEmail(user.getEmail()) == null) {
             userDao.save(user);
@@ -40,7 +41,7 @@ public class ControllerLogin {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getLoggedUsers")
+    @RequestMapping(method = RequestMethod.POST, value = "/getLoggedUsers")
     public ArrayList<UserLogin> getLoggedUsers() {
         return loggedUsersArray;
     }
