@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 export class RegistrationComponent implements OnInit,CanDeactivateComponent {
 
   passwordMessage = '';
+  toServer = false;
 
   constructor(private userServerService: UserServerService, private router: Router) { }
 
@@ -51,6 +52,7 @@ export class RegistrationComponent implements OnInit,CanDeactivateComponent {
   }
 
   formSubmit() {
+    this.toServer = true;
     const user = new User(
       this.name.value,
       this.email.value,
@@ -72,10 +74,16 @@ export class RegistrationComponent implements OnInit,CanDeactivateComponent {
 
   canDeactivate(): boolean | Observable<boolean> {
       console.log("Guard Ide");
-      /*const result = window.confirm("Nie je vyplnené všetko, chceš odísť?");
+      if(this.toServer) { return true; }
+
+      if (this.name.value && this.email.value && this.password.value && this.password2.value) {
+        return true;
+      }
+      if (!this.name.value && !this.email.value && !this.password.value && !this.password2.value) {
+        return true;
+      }
+      const result = window.confirm("Form is not completed wanna leave?");
       return result;
-      */
-     return true;
   }
 
 }
