@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ArctileWrapperComponent } from './arctile-wrapper/arctile-wrapper.component';
+import { HomeMainComponent } from './home-main/home-main.component';
 
 const routes: Routes = [
-  {path: '', component: ArctileWrapperComponent}
+  {path: '', component: HomeMainComponent}
 ];
 
 @NgModule({

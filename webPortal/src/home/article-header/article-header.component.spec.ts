@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArctileWrapperComponent } from './arctile-wrapper.component';
+import { ArticleHeaderComponent } from './article-header.component';
 
-describe('ArctileWrapperComponent', () => {
-  let component: ArctileWrapperComponent;
-  let fixture: ComponentFixture<ArctileWrapperComponent>;
+describe('ArticleHeaderComponent', () => {
+  let component: ArticleHeaderComponent;
+  let fixture: ComponentFixture<ArticleHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArctileWrapperComponent ]
+      declarations: [ ArticleHeaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArctileWrapperComponent);
+    fixture = TestBed.createComponent(ArticleHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
