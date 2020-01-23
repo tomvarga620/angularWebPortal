@@ -14,6 +14,9 @@ public class User {
     private String password;
     private String email;
 
+    @GeneratedValue
+    private boolean privilege;
+
     public User() {
     }
 
@@ -22,6 +25,15 @@ public class User {
         this.name = name;
         this.password = password;
         this.email = email;
+        this.privilege = false;
+    }
+
+    public boolean isPrivilege() {
+        return privilege;
+    }
+
+    public void setPrivilege(boolean privilege) {
+        this.privilege = privilege;
     }
 
     public UUID getId() {
@@ -54,5 +66,16 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", privilege=" + privilege +
+                '}';
     }
 }
