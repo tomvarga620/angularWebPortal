@@ -16,6 +16,7 @@ public class Article {
     private String contentUrl;
     private String author;
     private String description;
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     public Article() {

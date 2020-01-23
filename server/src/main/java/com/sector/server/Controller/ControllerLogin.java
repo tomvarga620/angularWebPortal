@@ -41,7 +41,7 @@ public class ControllerLogin {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/getLoggedUsers")
+    @RequestMapping(method = RequestMethod.GET, value = "/getLoggedUsers")
     public ArrayList<UserLogin> getLoggedUsers() {
         return loggedUsersArray;
     }

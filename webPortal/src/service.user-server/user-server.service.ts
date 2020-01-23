@@ -5,6 +5,7 @@ import { EMPTY, Observable, throwError } from 'rxjs';
 import { LoginAuth } from 'src/app/entities/loginAuth';
 import { catchError, mapTo, tap } from 'rxjs/operators';
 import { User } from '../app/entities/User';
+import { Article } from 'src/app/entities/Article';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,17 @@ export class UserServerService {
       .pipe(
         catchError(error => this.httpErrorProcess(error))
       );
+  }
+
+  getAllArticles(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.url + 'getAllArticles')
+      .pipe(
+        catchError(error => this.httpErrorProcess(error))
+      );
+  }
+
+  postArticle(article: Article): void {
+    this.http.post(this.url + 'postArticle', article);
   }
 
   httpErrorProcess(error) {
