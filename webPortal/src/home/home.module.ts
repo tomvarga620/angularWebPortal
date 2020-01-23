@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
-import { TestComponent } from './test/test.component';
+import { ArctileWrapperComponent } from './arctile-wrapper/arctile-wrapper.component';
 
 
 @NgModule({
-  declarations: [TestComponent],
+  declarations: [ArctileWrapperComponent],
   imports: [
     CommonModule,
     HomeRoutingModule
