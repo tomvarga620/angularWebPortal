@@ -28,7 +28,6 @@ public class UserController {
                     return (ArrayList<User>) userDao.findAll();
             }
         }
-
         return null;
     }
 }

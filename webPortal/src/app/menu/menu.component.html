@@ -1,6 +1,8 @@
 <nav>
     <ul>
         <a routerLink='' routerLinkActive="active"><li>Home</li></a>
+
+        <a routerLink='/users' routerLinkActive="active"><li>Users</li></a>
         
         <span *ngIf="loggedUser; else elseBlock">
                 <strong>{{loggedUser}}</strong> <a [routerLink]="" (click)="logout()">Logout</a>
