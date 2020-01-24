@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ArctileWrapperComponent } from './arctile-wrapper/arctile-wrapper.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
+import { HomeMainComponent } from './home-main/home-main.component';
+import { ArticlesHolderComponent } from './articles-holder/articles-holder.component';
+
 
 const routes: Routes = [
-  {path: '', component: ArctileWrapperComponent}
-];
+  {path: '', component: ArticlesHolderComponent},
+  {path: 'article/:id', component: ArticleDetailComponent},
+  {path: '', component: HomeMainComponent}
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

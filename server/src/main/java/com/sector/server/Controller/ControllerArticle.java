@@ -7,12 +7,12 @@ import com.sector.server.Entities.article.Article;
 import com.sector.server.Entities.loginEntity.UserLogin;
 import com.sector.server.repositories.ArticleDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ControllerArticle {
     @Autowired
@@ -43,5 +43,10 @@ public class ControllerArticle {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getArticleById/{id}")
+    public Optional<Article> getArticleById(@PathVariable(name = "id") Long id) {
+            return articleDao.findById(id);
     }
 }

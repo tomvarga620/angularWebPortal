@@ -47,7 +47,14 @@ export class UserServerService {
   }
 
   postArticle(article: Article): void {
-    this.http.post(this.url + 'postArticle', article);
+    this.http.post(this.url + 'postArticle', article)
+      .pipe(
+        catchError(error => this.httpErrorProcess(error))
+      )
+  }
+
+  getArticleById(id: number): Observable<Article> {
+    return this.http.get<Article>(this.url + 'getArticleById/' + id);
   }
 
   httpErrorProcess(error) {
