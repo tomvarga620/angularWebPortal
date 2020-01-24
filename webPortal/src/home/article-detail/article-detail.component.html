@@ -1,6 +1,6 @@
-<article>
-    <title>{{ article.title }}</title>
+<article *ngIf="article" class="articleDetail">
+    <span>{{ article.title}}</span>
     <div class="description"></div>
     <div class="image"></div>
     <div class="content"></div>
-</article>
+</article >

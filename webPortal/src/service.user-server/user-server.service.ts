@@ -64,7 +64,6 @@ export class UserServerService {
     return users;
   }
 
-
   postArticle(article: Article): void {
     this.http.post(this.url + 'postArticle', article)
       .pipe(
@@ -73,7 +72,8 @@ export class UserServerService {
   }
 
   getArticleById(id: number): Observable<Article> {
-    return this.http.get<Article>(this.url + 'getArticleById/' + id);
+    return this.http.get<Article>(this.url + 'getArticleById/' + id)
+    .pipe(catchError(error => this.httpErrorProcess(error)));
   }
 
   httpErrorProcess(error) {

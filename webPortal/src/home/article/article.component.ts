@@ -18,7 +18,8 @@ export class ArticleComponent implements OnInit {
   }
 
   openArticle(id: number) {
-    this.router.navigateByUrl('/article/' + id)
+    // this.router.navigateByUrl('/article/' + id);
+    this.router.navigateByUrl('/article/' + id);
   }
 
 }
