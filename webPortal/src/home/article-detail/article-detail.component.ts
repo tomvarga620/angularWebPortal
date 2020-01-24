@@ -10,20 +10,13 @@ import { Article } from 'src/app/entities/Article';
 })
 export class ArticleDetailComponent implements OnInit {
   private articleId: number;
-  private article: Article;
+  public article: Article;
 
   constructor(private serverService: UserServerService, private routes: ActivatedRoute) { }
 
   ngOnInit() {
     this.articleId = this.routes.snapshot.params['id'];
 
-    this.getArticle();
-  }
-
-  getArticle() {
     this.serverService.getArticleById(this.articleId).subscribe(article => this.article = article);
-    console.log(this.article);
-
-  }
-  
+  } 
 }
