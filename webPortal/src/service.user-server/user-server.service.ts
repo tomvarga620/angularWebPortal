@@ -58,7 +58,7 @@ export class UserServerService {
       if (user.groups) {
         users.push(User.clone(user));
       } else {
-        users.push(new User(user.name, user.email, user.id));
+        users.push(new User(user.name, user.email, user.id, user.privilage));
       }
     }
     return users;
