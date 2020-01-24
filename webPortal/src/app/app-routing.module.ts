@@ -7,7 +7,8 @@ import { DeactivateGuard } from './guard/deactivate-guard.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'registration', component: RegistrationComponent, canDeactivate: [DeactivateGuard]},
-  { path: '' , loadChildren: () => import('../home/home.module').then(mod => mod.HomeModule)}
+  { path: '' , loadChildren: () => import('../home/home.module').then(mod => mod.HomeModule)},
+  { path: 'users' , loadChildren: () => import('../users/users.module').then(mod => mod.UsersModule)},
 ];
 
 @NgModule({

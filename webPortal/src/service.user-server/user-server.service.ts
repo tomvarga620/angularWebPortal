@@ -3,7 +3,7 @@ import { Store } from '@ngxs/store';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { EMPTY, Observable, throwError } from 'rxjs';
 import { LoginAuth } from 'src/app/entities/loginAuth';
-import { catchError, mapTo, tap } from 'rxjs/operators';
+import { catchError, mapTo, tap, map } from 'rxjs/operators';
 import { User } from '../app/entities/User';
 import { Article } from 'src/app/entities/Article';
 
@@ -45,6 +45,25 @@ export class UserServerService {
         catchError(error => this.httpErrorProcess(error))
       );
   }
+
+  getUsers(): Observable<Array<User>> {
+    return this.http.get(this.url + "getAllUsers").pipe(
+    map(jsonObj => this.fromJsonToListUsers(jsonObj)),
+    catchError(error => this.httpErrorProcess(error)));
+  }
+
+  private fromJsonToListUsers(jsonObject: any): Array<User> {
+    const users: Array<User> = [];
+    for (const user of jsonObject) {
+      if (user.groups) {
+        users.push(User.clone(user));
+      } else {
+        users.push(new User(user.name, user.email, user.id));
+      }
+    }
+    return users;
+  }
+
 
   postArticle(article: Article): void {
     this.http.post(this.url + 'postArticle', article)
