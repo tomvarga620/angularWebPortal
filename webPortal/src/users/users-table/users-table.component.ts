@@ -10,25 +10,22 @@ import { UserServerService } from '../../service.user-server/user-server.service
 })
 export class UsersTableComponent implements OnInit {
   displayedColumns: string[] = [
-    'name',
+    'id',
     'email',
-    'lastLogin',
-    'active',
-    'groups',
-    'permissions',
-    'actions'
+    'name'
   ];
   dataSource = new MatTableDataSource<User>();
 
   constructor(private userServerService: UserServerService) { }
 
   ngOnInit() {
+    console.log('table work');
   }
 
   ngAfterViewInit(): void {
     this.userServerService.getUsers().subscribe(users => {
       this.dataSource.data = users;
-    })
+    });
   }
 
 }

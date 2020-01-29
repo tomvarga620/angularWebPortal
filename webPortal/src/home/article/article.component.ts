@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class ArticleComponent implements OnInit {
   private articles: Article[];
   private article: Article;
-  private message: String = "test";
 
   constructor(private serverService: UserServerService, private router: Router) { }
 
@@ -20,11 +19,10 @@ export class ArticleComponent implements OnInit {
   }
 
   openArticle(id: number) {
-
     this.article = this.articles.find(article => article.id === id);
-    console.log(this.article);
-
+    this.serverService.saveArticle(this.article);
     this.router.navigateByUrl('/article/' + id);
+    //this.router.navigate(['/article/' + id, JSON.stringify(this.article)]);
   }
 
 }
