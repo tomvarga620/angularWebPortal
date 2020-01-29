@@ -24,7 +24,7 @@ export class UserServerService {
     catchError(error => this.httpErrorProcess(error)));
   }
 
-  register(user: User): Observable<User> {
+  register(user: User): Observable<User> { 
     return this.http.post<User>(this.url + 'register', user)
     .pipe(
       catchError(error => this.httpErrorProcess(error))

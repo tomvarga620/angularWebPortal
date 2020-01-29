@@ -16,7 +16,7 @@ export class ArticleDetailComponent implements OnInit {
   constructor(private serverService: UserServerService, private routes: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(article);
+    //console.log(article);
     //this.articleId = this.routes.snapshot.params['id'];
     //this.serverService.getArticleById(this.articleId).subscribe(article => this.article = article);
   }

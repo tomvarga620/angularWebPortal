@@ -21,10 +21,11 @@ public class ControllerLogin {
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     @ResponseBody
     public UserLogin login(@RequestBody LoginForm loginForm) {
-        if (userDao.findByEmailAndAndPassword(loginForm.getEmail(), loginForm.getPassword()) != null) {
+        System.out.println(loginForm.toString());
+        if (userDao.findByEmailAndAndPassword(loginForm.getUsername(), loginForm.getPassword()) != null) {
             if (loggedUsersArray.contains(loginForm))
                 loggedUsersArray.remove(loginForm);
-            UserLogin user = new UserLogin(loginForm.getEmail());
+            UserLogin user = new UserLogin(loginForm.getUsername());
             loggedUsersArray.add(user);
             return user;
         } else
