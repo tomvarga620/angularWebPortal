@@ -27,6 +27,5 @@ export class ArticleDetailComponent implements OnInit {
 
     console.log(this.serverService.loadArticle());
     this.article = this.serverService.loadArticle();
-
   }
 }

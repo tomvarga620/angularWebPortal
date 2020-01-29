@@ -47,8 +47,9 @@ public class ControllerLogin {
         return loggedUsersArray;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/logout")
+    @RequestMapping(method = RequestMethod.POST, value = "/logout")
     public boolean logout(@RequestBody UserLogin login) {
+        System.out.println(login.toString());
         for (UserLogin u: loggedUsersArray) {
             if (u.equals(login)) {
                 loggedUsersArray.remove(login);

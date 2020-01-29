@@ -23,7 +23,7 @@ public class UserController {
     public ArrayList<User> getAllUsers(@RequestBody UserLogin login) {
         for (UserLogin u: loggedUsersArray) {
             if (u.equals(login)) {
-                User user = userDao.findByEmail(u.getEmail());
+                User user = userDao.findByEmail(u.getUsername());
 
                 if (user.isPrivilege())
                     return (ArrayList<User>) userDao.findAll();

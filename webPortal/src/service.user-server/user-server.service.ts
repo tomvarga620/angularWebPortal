@@ -35,8 +35,9 @@ export class UserServerService {
     return this.articleToDetail;
   }
 
-  logout(): Observable<void> {
-    return this.http.get(this.url + 'logout' + this.token)
+  logout(username: string, token: string): Observable<void> {
+    const user = new LoginAuth(username, token);
+    return this.http.post(this.url + 'logout', user)
     .pipe(mapTo(undefined),
     catchError(error => this.httpErrorProcess(error)));
   }

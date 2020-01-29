@@ -23,6 +23,11 @@ export class LoginAuthState {
         return current.username;
     }
 
+    @Selector()
+    static token(current: LoginAuthModel) {
+        return current.token;
+    }
+
     constructor(private userServerService: UserServerService) {}
 
     @Action(Login)
@@ -39,9 +44,14 @@ export class LoginAuthState {
 
     @Action(Logout)
     logout(ctx: StateContext<LoginAuthModel>, action: Logout) {
-        ctx.setState({
-            username: null,
-            token: null
-        });
+        return this.userServerService.logout(ctx.getState().username,ctx.getState().token)
+        .pipe(
+            tap(() => {
+                ctx.setState({
+                    username: null,
+                    token: null
+                });
+            })
+        )
     }
 }

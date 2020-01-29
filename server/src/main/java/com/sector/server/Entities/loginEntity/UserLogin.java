@@ -3,15 +3,15 @@ package com.sector.server.Entities.loginEntity;
 import java.util.UUID;
 
 public class UserLogin {
+    private String username ;
     private UUID token;
-    private String email;
 
     public UserLogin() {
     }
 
-    public UserLogin(String email) {
+    public UserLogin(String username) {
         this.token = UUID.randomUUID();
-        this.email = email;
+        this.username = username;
     }
 
     public UUID getToken() {
@@ -22,12 +22,12 @@ public class UserLogin {
         this.token = token;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -43,21 +43,21 @@ public class UserLogin {
         if (token != null ? !token.equals(userLogin.token) : userLogin.token != null)
             return false;
 
-        return email != null ? email.equals(userLogin.email) : userLogin.email == null;
+        return username != null ? username.equals(userLogin.username) : userLogin.username == null;
     }
 
     @Override
     public String toString() {
         return "UserLogin{" +
                 "token=" + token +
-                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
                 '}';
     }
 
     @Override
     public int hashCode() {
         int result = token != null ? token.hashCode() : 0;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
         return result;
     }
 }
