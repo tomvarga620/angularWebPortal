@@ -11,11 +11,28 @@ import { Article } from 'src/app/entities/Article';
   providedIn: 'root'
 })
 export class UserServerService {
+  private articleToDetail: Article;
   url = 'http://localhost:8080/';
   constructor(private http: HttpClient, private store: Store) { }
 
   get token() {
     return this.store.selectSnapshot(state => state.login.token);
+  }
+
+  set article(article: Article) {
+    article = this.articleToDetail;
+  }
+
+  get article() {
+    return this.articleToDetail;
+  }
+
+  saveArticle(article: Article) {
+    this.articleToDetail = article;
+  }
+
+  loadArticle() {
+    return this.articleToDetail;
   }
 
   logout(): Observable<void> {
