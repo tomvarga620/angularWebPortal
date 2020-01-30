@@ -44,7 +44,7 @@ export class LoginAuthState {
 
     @Action(Logout)
     logout(ctx: StateContext<LoginAuthModel>, action: Logout) {
-        return this.userServerService.logout(ctx.getState().username,ctx.getState().token)
+        return this.userServerService.logout()
         .pipe(
             tap(() => {
                 ctx.setState({

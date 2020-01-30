@@ -26,23 +26,15 @@ public class ControllerArticle {
         return (ArrayList<Article>) articleDao.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/postArticle")
-    public Article postArticle(@RequestBody ObjectNode object) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            UserLogin login = mapper.readValue(object.get("login").toString(), UserLogin.class);
-            Article article = mapper.readValue(object.get("article").toString(), Article.class);
-
+    @RequestMapping(method = RequestMethod.POST, value = "/postArticle/{token}")
+    public Article postArticle(@RequestBody Article article, @PathVariable(value = "token") String token) {
             for (UserLogin u: loggedUsersArray) {
-                if (u.equals(login)) {
+                if (u.getToken().toString().equals(token)) {
                     articleDao.save(article);
                     return article;
                 }
             }
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return null;
+            return null; //////////////////RETURN CODE
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getArticleById/{id}")

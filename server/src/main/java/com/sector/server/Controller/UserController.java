@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -19,10 +20,10 @@ public class UserController {
     private static LoggedUsers loggedUsers = LoggedUsers.getInstance();
     private static ArrayList<UserLogin> loggedUsersArray = loggedUsers.getLoggedUsersArray();
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getAllUsers")
-    public ArrayList<User> getAllUsers(@RequestBody UserLogin login) {
+    @RequestMapping(method = RequestMethod.GET, value = "/getAllUsers/{token}")
+    public ArrayList<User> getAllUsers(@PathVariable(value = "token") String token) {
         for (UserLogin u: loggedUsersArray) {
-            if (u.equals(login)) {
+            if (u.getToken().toString().equals(token)) {
                 User user = userDao.findByEmail(u.getUsername());
 
                 if (user.isPrivilege())
@@ -30,5 +31,18 @@ public class UserController {
             }
         }
         return null;
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/editUser/{token}")
+    public void editUser(@PathVariable(value = "token") String token, @RequestBody User editedUser) {
+        for (UserLogin u: loggedUsersArray) {
+            if (u.getToken().toString().equals(token)) {
+                User user = userDao.findByEmail(u.getUsername());
+
+                if (user.isPrivilege()) {
+                    Optional<User> updatedUser = userDao.findById(editedUser.getId());
+                }
+            }
+        }
     }
 }

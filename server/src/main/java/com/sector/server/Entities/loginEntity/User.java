@@ -9,7 +9,7 @@ import java.util.UUID;
 public class User {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
     private String name;
     private String password;
     private String email;
@@ -21,7 +21,7 @@ public class User {
     }
 
     public User(String name, String password, String email) {
-        this.id = UUID.randomUUID();
+        //this.id = UUID.randomUUID();
         this.name = name;
         this.password = password;
         this.email = email;
@@ -36,11 +36,11 @@ public class User {
         this.privilege = privilege;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

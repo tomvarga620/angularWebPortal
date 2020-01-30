@@ -47,12 +47,13 @@ public class ControllerLogin {
         return loggedUsersArray;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/logout")
-    public boolean logout(@RequestBody UserLogin login) {
-        System.out.println(login.toString());
+    @RequestMapping(method = RequestMethod.GET, value = "/logout/{token}")
+    public boolean logout(@PathVariable(name = "token") String token) {
+
+        System.out.println(token);
         for (UserLogin u: loggedUsersArray) {
-            if (u.equals(login)) {
-                loggedUsersArray.remove(login);
+            if (u.getToken().toString().equals(token)) {
+                loggedUsersArray.remove(u);
                 return true;
             }
         }

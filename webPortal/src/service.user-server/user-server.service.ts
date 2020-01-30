@@ -6,6 +6,7 @@ import { LoginAuth } from 'src/app/entities/loginAuth';
 import { catchError, mapTo, tap, map } from 'rxjs/operators';
 import { User } from '../app/entities/User';
 import { Article } from 'src/app/entities/Article';
+import { error } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +36,8 @@ export class UserServerService {
     return this.articleToDetail;
   }
 
-  logout(username: string, token: string): Observable<void> {
-    const user = new LoginAuth(username, token);
-    return this.http.post(this.url + 'logout', user)
+  logout(): Observable<void> {
+    return this.http.get(this.url + 'logout/' + this.token)
     .pipe(mapTo(undefined),
     catchError(error => this.httpErrorProcess(error)));
   }
@@ -65,7 +65,7 @@ export class UserServerService {
   }
 
   getUsers(): Observable<Array<User>> {
-    return this.http.get(this.url + "getAllUsers").pipe(
+    return this.http.get(this.url + "getAllUsers/" + this.token).pipe(
     map(jsonObj => this.fromJsonToListUsers(jsonObj)),
     catchError(error => this.httpErrorProcess(error)));
   }
@@ -83,7 +83,7 @@ export class UserServerService {
   }
 
   postArticle(article: Article): void {
-    this.http.post(this.url + 'postArticle', article)
+    this.http.post(this.url + 'postArticle/' + this.token, article)
       .pipe(
         catchError(error => this.httpErrorProcess(error))
       )
@@ -92,6 +92,13 @@ export class UserServerService {
   getArticleById(id: number): Observable<Article> {
     return this.http.get<Article>(this.url + 'getArticleById/' + id)
     .pipe(catchError(error => this.httpErrorProcess(error)));
+  }
+
+  editUser(user: User): void {
+    this.http.put(this.url + 'editUser/' + this.token, user)
+      .pipe(
+        catchError(error => this.httpErrorProcess(error))
+      )
   }
 
   httpErrorProcess(error) {
