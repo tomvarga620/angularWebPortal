@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: '', component: ArticlesHolderComponent},
   {path: 'article/:id', component: ArticleDetailComponent},
   {path: '', component: HomeMainComponent}
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

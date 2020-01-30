@@ -1,3 +1,4 @@
+<section class="tableWrap">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
     <ng-container matColumnDef="id">
@@ -18,4 +19,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   
-  </table>
+</table>
+</section>

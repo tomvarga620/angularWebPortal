@@ -1,3 +1,14 @@
+
 table {
     background-color:white!important;
+    width:800px;
+}
+
+.tableWrap {
+    width:100%;
+    height:100%;
+    background:black;
+    display:flex;
+    justify-content: center;
+    align-items:center;
 }

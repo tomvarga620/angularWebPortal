@@ -52,6 +52,6 @@ export class LoginAuthState {
                     token: null
                 });
             })
-        )
+        );
     }
 }

@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   formSubmit() {
     this.loginAuth.username = this.name.value;
     this.loginAuth.password = this.password.value;
-    
+  
     this.store.dispatch(new Login(this.loginAuth)).subscribe(() => {
       if (this.store.selectSnapshot(LoginAuthState.username)) {
           console.log('login succesfull');
