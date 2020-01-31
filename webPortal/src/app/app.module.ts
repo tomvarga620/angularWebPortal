@@ -11,13 +11,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppNgxsModule } from './app.ngxs.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'src/material/material.module';
+import { CreateArticleComponent } from './create-article/create-article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CreateArticleComponent
   ],
   imports: [
   BrowserModule,

@@ -66,11 +66,19 @@ export class UserServerService {
   }
 
   getUsers(): Observable<Array<User>> {
-    return this.http.get<User[]>(this.url + "getAllUsers/" + this.token).pipe(
-      //map(jsonObj => this.fromJsonToListUsers(jsonObj)),
-      catchError(error => this.httpErrorProcess(error)));
+    return this.http.get<User[]>(this.url + "getAllUsers/" + this.token)
+      .pipe(
+        //map(jsonObj => this.fromJsonToListUsers(jsonObj)),
+        catchError(error => this.httpErrorProcess(error)));
   }
 
+  upLoadImage(data: File): Observable<void> {
+    return this.http.post<void>(this.url + 'uploadImage', data)
+      .pipe(
+        catchError(error => this.httpErrorProcess(error))
+      );
+  }
+/*
   private fromJsonToListUsers(jsonObject: any): Array<User> {
     const users: Array<User> = [];
     for (const user of jsonObject) {
@@ -82,7 +90,7 @@ export class UserServerService {
     }
     return users;
   }
-
+*/
   postArticle(article: Article): void {
     this.http.post(this.url + 'postArticle/' + this.token, article)
       .pipe(

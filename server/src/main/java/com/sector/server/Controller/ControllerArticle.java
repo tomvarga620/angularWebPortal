@@ -10,7 +10,12 @@ import com.sector.server.repositories.ArticleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -42,5 +47,12 @@ public class ControllerArticle {
     @RequestMapping(method = RequestMethod.GET, value = "/getArticleById/{id}")
     public Optional<Article> getArticleById(@PathVariable(name = "id") Long id) {
             return articleDao.findById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/uploadImage")
+    public void upLoadImage(@RequestBody MultipartFile file) {
+       // System.out.println(file.getContentType());
+        //System.out.println(file.getName());
+
     }
 }
