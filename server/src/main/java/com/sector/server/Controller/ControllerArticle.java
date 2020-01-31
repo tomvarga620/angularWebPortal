@@ -5,8 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.sector.server.Entities.article.Article;
 import com.sector.server.Entities.loginEntity.UserLogin;
+import com.sector.server.Exeption.UnauthorizedRequestException;
 import com.sector.server.repositories.ArticleDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class ControllerArticle {
                     return article;
                 }
             }
-            return null; //////////////////RETURN CODE
+       throw new UnauthorizedRequestException("Bad Login");
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getArticleById/{id}")
