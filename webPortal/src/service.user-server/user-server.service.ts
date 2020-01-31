@@ -49,9 +49,9 @@ export class UserServerService {
     );
   }
 
-  login(auth: LoginAuth): Observable<string> {
+  login(auth: LoginAuth): Observable<LoginAuth> {
     return this.http
-      .post(this.url + 'login', auth, { responseType: 'text' })
+      .post<LoginAuth>(this.url + 'login', auth)
       .pipe(
         catchError(error => this.httpErrorProcess(error))
       );
@@ -65,9 +65,9 @@ export class UserServerService {
   }
 
   getUsers(): Observable<Array<User>> {
-    return this.http.get(this.url + "getAllUsers/" + this.token).pipe(
-    map(jsonObj => this.fromJsonToListUsers(jsonObj)),
-    catchError(error => this.httpErrorProcess(error)));
+    return this.http.get<User[]>(this.url + "getAllUsers/" + this.token).pipe(
+      //map(jsonObj => this.fromJsonToListUsers(jsonObj)),
+      catchError(error => this.httpErrorProcess(error)));
   }
 
   private fromJsonToListUsers(jsonObject: any): Array<User> {
