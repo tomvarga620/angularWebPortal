@@ -121,7 +121,7 @@ export class UserServerService {
       if (error.error.errorMessage) {
        this.snackBarService.errorMessage(error.error.errorMessage);
       } else {
-       this.snackBarService.errorMessage(JSON.parse(error.error).errorMessage);
+       this.snackBarService.errorMessage(error.error.errorMessage);
       }
       return;
     }
