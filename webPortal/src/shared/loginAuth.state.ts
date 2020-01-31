@@ -33,10 +33,10 @@ export class LoginAuthState {
     @Action(Login)
     login(ctx: StateContext<LoginAuthModel>, action: Login) {
         return this.userServerService.login(action.loginAuth).pipe(
-            tap(token => {
+            tap(obj => {
                 ctx.setState({
-                    username: action.loginAuth.username,
-                    token
+                    username: obj.username,
+                    token: obj.token
                 });
             })
         );

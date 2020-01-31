@@ -42,8 +42,6 @@ public class UserController {
 
                 if (user.isPrivilege()) {
                     Optional<User> updatedUser = userDao.findById(editedUser.getId());
-
-
                 }
                 throw new UnauthorizedRequestException("Bad Login");
             }
