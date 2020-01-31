@@ -3,6 +3,7 @@ package com.sector.server.Controller;
 import com.sector.server.Entities.loginEntity.LoginForm;
 import com.sector.server.Entities.loginEntity.User;
 import com.sector.server.Entities.loginEntity.UserLogin;
+import com.sector.server.Exeption.UnauthorizedRequestException;
 import com.sector.server.repositories.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +24,12 @@ public class ControllerLogin {
     public UserLogin login(@RequestBody LoginForm loginForm) {
         System.out.println(loginForm.toString());
         if (userDao.findByEmailAndAndPassword(loginForm.getUsername(), loginForm.getPassword()) != null) {
-            if (loggedUsersArray.contains(loginForm))
-                loggedUsersArray.remove(loginForm);
+            /*if (loggedUsersArray.contains(loginForm))
+                loggedUsersArray.remove(loginForm);*/
             UserLogin user = new UserLogin(loginForm.getUsername());
             loggedUsersArray.add(user);
             return user;
-        } else
-            return null;
+        } throw new UnauthorizedRequestException("Bad Login");
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
@@ -37,9 +37,8 @@ public class ControllerLogin {
         if (userDao.findByEmail(user.getEmail()) == null) {
             userDao.save(user);
             return true;
-        } else {
-            return false;
-        }
+        }// throw new UnauthorizedRequestException("Bad Login");
+        return false;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getLoggedUsers")
@@ -57,6 +56,6 @@ public class ControllerLogin {
                 return true;
             }
         }
-        return false;
+        throw new UnauthorizedRequestException("Bad Login");
     }
 }

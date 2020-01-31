@@ -1,6 +1,7 @@
 package com.sector.server.Controller;
 import com.sector.server.Entities.loginEntity.User;
 import com.sector.server.Entities.loginEntity.UserLogin;
+import com.sector.server.Exeption.UnauthorizedRequestException;
 import com.sector.server.repositories.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,7 +31,7 @@ public class UserController {
                     return (ArrayList<User>) userDao.findAll();
             }
         }
-        return null;
+        throw new UnauthorizedRequestException("Bad Login");
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/editUser/{token}")
@@ -41,8 +42,12 @@ public class UserController {
 
                 if (user.isPrivilege()) {
                     Optional<User> updatedUser = userDao.findById(editedUser.getId());
+
+
                 }
+                throw new UnauthorizedRequestException("Bad Login");
             }
+            throw new UnauthorizedRequestException("Bad Login");
         }
     }
 }
