@@ -7,6 +7,7 @@ import { catchError, mapTo, tap, map } from 'rxjs/operators';
 import { User } from '../app/entities/User';
 import { Article } from 'src/app/entities/Article';
 import { error } from 'util';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ import { error } from 'util';
 export class UserServerService {
   private articleToDetail: Article;
   url = 'http://localhost:8080/';
-  constructor(private http: HttpClient, private store: Store) { }
+  constructor(private http: HttpClient, private store: Store, private snackBarService: SnackbarService) { }
 
   get token() {
     return this.store.selectSnapshot(state => state.login.token);
@@ -86,7 +87,7 @@ export class UserServerService {
     this.http.post(this.url + 'postArticle/' + this.token, article)
       .pipe(
         catchError(error => this.httpErrorProcess(error))
-      )
+      );
   }
 
   getArticleById(id: number): Observable<Article> {
@@ -113,17 +114,17 @@ export class UserServerService {
 
   httpErrorToMesage(error: HttpErrorResponse): void {
     if (error.status === 0) {
-      // this.messageService.sendMesage("Server je nedostupný");
+      this.snackBarService.errorMessage('Server je nedostupný');
       return;
     }
     if (error.status >= 400 && error.status < 500) {
       if (error.error.errorMessage) {
-       // this.messageService.sendMesage(error.error.errorMessage);
+       this.snackBarService.errorMessage(error.error.errorMessage);
       } else {
-       // this.messageService.sendMesage(JSON.parse(error.error).errorMessage);
+       this.snackBarService.errorMessage(JSON.parse(error.error).errorMessage);
       }
       return;
     }
-   // this.messageService.sendMesage(error.message);
+    this.snackBarService.errorMessage(error.message);
   }
 }

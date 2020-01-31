@@ -10,6 +10,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppNgxsModule } from './app.ngxs.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from 'src/material/material.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     BrowserAnimationsModule,
     AppNgxsModule,
+    MaterialModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
