@@ -5,6 +5,7 @@ import java.util.UUID;
 public class UserLogin {
     private String username ;
     private UUID token;
+    private boolean privilage;
 
     public UserLogin() {
     }
@@ -12,6 +13,14 @@ public class UserLogin {
     public UserLogin(String username) {
         this.token = UUID.randomUUID();
         this.username = username;
+    }
+
+    public boolean isPrivilage() {
+        return privilage;
+    }
+
+    public void setPrivilage(boolean privilage) {
+        this.privilage = privilage;
     }
 
     public UUID getToken() {
