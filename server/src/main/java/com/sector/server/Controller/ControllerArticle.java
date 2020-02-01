@@ -16,6 +16,8 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -51,8 +53,22 @@ public class ControllerArticle {
 
     @RequestMapping(method = RequestMethod.POST, value = "/uploadImage")
     public void upLoadImage(@RequestBody MultipartFile file) {
-       // System.out.println(file.getContentType());
-        //System.out.println(file.getName());
+       System.out.println(file.getContentType());
+       System.out.println(file.getName());
+
+       File file1 = new File("C:\\Users\\MI\\Desktop\\Images\\" + file.getOriginalFilename());
+       
+       /* try {
+            file.transferTo(Paths.get("C:\\Users\\MI\\Desktop\\Images"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        try {
+            file.transferTo(file1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

@@ -8,19 +8,22 @@ import { UserServerService } from 'src/service.user-server/user-server.service';
 })
 export class CreateArticleComponent implements OnInit {
   file: File = null;
+  data: FormData;
 
   constructor(private userServerService: UserServerService) { }
 
   ngOnInit() {
   } 
 
-  uploadFile(event) {
+  getFile(event) {
     this.file = <File>event.target.files[0];
-    const data = new FormData();
-    data.append("file", this.file, this.file.name);
+    this.data = new FormData();
+    this.data.append("file", this.file, this.file.name);
+  }
 
-    this.userServerService.upLoadImage(this.file).subscribe(() => console.log("REQUEST"));
-    
+  uploadFile() {
+    this.userServerService.upLoadImage(this.data)
+      .subscribe(() => console.log("REQUEST"))
   }
 
 }

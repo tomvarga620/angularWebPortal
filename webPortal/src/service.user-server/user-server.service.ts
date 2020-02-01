@@ -72,7 +72,7 @@ export class UserServerService {
         catchError(error => this.httpErrorProcess(error)));
   }
 
-  upLoadImage(data: File): Observable<void> {
+  upLoadImage(data: FormData): Observable<void> {
     return this.http.post<void>(this.url + 'uploadImage', data)
       .pipe(
         catchError(error => this.httpErrorProcess(error))

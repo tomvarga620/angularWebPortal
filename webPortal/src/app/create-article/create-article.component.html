@@ -1,4 +1,5 @@
 <div>
     <p>Choose file: </p>
-    <input type="file" (change)="uploadFile($event)">
+    <input type="file" (change)="getFile($event)">
+    <input type="button" value="upload" (click)="uploadFile()">
 </div>
