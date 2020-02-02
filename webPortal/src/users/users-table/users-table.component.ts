@@ -30,7 +30,7 @@ export class UsersTableComponent implements OnInit {
 
   deleteUser(user: User){
       this.userServerService.deleteUser(user).subscribe(() => {
-        this.dataSource.data = this.dataSource.data.filter(u => u != user);
+          this.dataSource.data = this.dataSource.data.filter(u => u !== user);
       });
   }
 

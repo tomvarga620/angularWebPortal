@@ -10,7 +10,7 @@ table {
 table,th,td{
     border: 1px solid white!important;
     font-size: 1em;
-    text-align:center;
+    text-align:center!important;
 }
 
 
@@ -25,4 +25,9 @@ table,th,td{
 
 button {
     margin-left:20px;
+    background: none;
+}
+
+button mat-icon {
+    color:white;
 }
