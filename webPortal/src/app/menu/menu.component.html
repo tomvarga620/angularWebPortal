@@ -2,9 +2,9 @@
     <ul>
         <a routerLink='' routerLinkActive="active"><li>Home</li></a>
 
-        <a routerLink='/users' routerLinkActive="active"><li>Users</li></a>
+        <a routerLink='/users' routerLinkActive="active" *ngIf='show'><li>Users</li></a>
 
-        <a routerLink='/createArticle' routerLinkActive="active"><li>Create Article</li></a>
+        <a routerLink='/createArticle' routerLinkActive="active" *ngIf='show'><li>Create Article</li></a>
         
         <span *ngIf="loggedUser; else elseBlock">
                 <strong>{{loggedUser}}</strong> <a [routerLink]="" (click)="logout()">Logout</a>

@@ -13,19 +13,28 @@ import { Logout, Login } from 'src/shared/loginAuth.actions';
 export class MenuComponent implements OnInit {
 
   loggedUser = null;
-  show: boolean = false;
+  show = false;
 
   @Select(LoginAuthState.username) username$;
 
   constructor(private store: Store, private router: Router , private action$: Actions ) {
-    this.action$.pipe(ofActionSuccessful(Logout)).subscribe( () => this.router.navigateByUrl('login'));
+    // after logout
+    this.action$.pipe(ofActionSuccessful(Logout)).subscribe( () => {
+      this.show = this.store.selectSnapshot(LoginAuthState.privilage);
+      this.router.navigateByUrl('login');
+    });
+
+    // after login
+    this.action$.pipe(ofActionSuccessful(Login)).subscribe( () => {
+        this.show = this.store.selectSnapshot(LoginAuthState.privilage);
+    });
   }
 
   ngOnInit() {
     this.store.select(LoginAuthState.username).subscribe(u => (this.loggedUser = u));
     console.log('logged ' + this.loggedUser);
-    this.show = this.store.selectSnapshot(LoginAuthState.privilage);
-    console.log(this.show);
+    //this.show = this.store.selectSnapshot(LoginAuthState.privilage);
+    //console.log(this.show);
   }
 
   logout() {
