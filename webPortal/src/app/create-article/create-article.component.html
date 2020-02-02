@@ -1,5 +1,48 @@
 <div>
-    <p>Choose file: </p>
-    <input type="file" (change)="getFile($event)">
-    <input type="button" value="upload" (click)="uploadFile()">
+    <form (ngSubmit)="postArticle()" [(ngModel)]="form">
+        <mat-form-field>
+            <input type="text"
+                matInput 
+                placeholder="Author Name"  
+                required
+                name="author"
+                [(ngModel)]="author">
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text"
+                matInput 
+                placeholder="Title Name"  
+                required
+                name="title"
+                [(ngModel)]="title">>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text"
+                matInput 
+                placeholder="Category Name"  
+                required>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea 
+                matInput 
+                placeholder="Description"  
+                required>
+            </textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea 
+                matInput 
+                placeholder="Article Cntent"  
+                required>
+            </textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <p>Choose file: </p>
+            <input type="file" (change)="getFile($event)">
+            <!--<input type="button" value="upload" (click)="uploadFile()">-->
+        </mat-form-field>
+        <button type="submit">
+            Post
+        </button>
+    </form>
 </div>

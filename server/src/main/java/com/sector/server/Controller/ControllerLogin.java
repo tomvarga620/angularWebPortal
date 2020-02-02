@@ -36,8 +36,7 @@ public class ControllerLogin {
         if (userDao.findByEmail(user.getEmail()) == null) {
             userDao.save(user);
             return true;
-        }// throw new UnauthorizedRequestException("Bad Login");
-        return false;
+        } throw new UnauthorizedRequestException("User Already Exist");
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getLoggedUsers")

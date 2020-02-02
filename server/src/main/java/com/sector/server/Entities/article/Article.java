@@ -10,10 +10,9 @@ public class Article {
     private String category;
     private String title;
     private String date;
-    @Transient
+
     private String imgUrl;
-    @Transient
-    private String contentUrl;
+
     private String author;
     private String description;
     @Column(columnDefinition = "TEXT")
@@ -27,7 +26,6 @@ public class Article {
         this.title = title;
         this.date = date;
         this.imgUrl = imgUrl;
-        this.contentUrl = contentUrl;
         this.author = author;
     }
 
@@ -103,7 +101,6 @@ public class Article {
                 ", title='" + title + '\'' +
                 ", date='" + date + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
-                ", contentUrl='" + contentUrl + '\'' +
                 ", author='" + author + '\'' +
                 ", description='" + description + '\'' +
                 '}';

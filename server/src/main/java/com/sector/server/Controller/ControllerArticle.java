@@ -53,22 +53,12 @@ public class ControllerArticle {
 
     @RequestMapping(method = RequestMethod.POST, value = "/uploadImage")
     public void upLoadImage(@RequestBody MultipartFile file) {
-       System.out.println(file.getContentType());
-       System.out.println(file.getName());
-
-       File file1 = new File("C:\\Users\\MI\\Desktop\\Images\\" + file.getOriginalFilename());
-       
-       /* try {
-            file.transferTo(Paths.get("C:\\Users\\MI\\Desktop\\Images"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
+        System.out.println(file.getOriginalFilename());
         try {
-            file.transferTo(file1);
+            File upload = new File("C:\\Users\\MI\\Desktop\\angularWebPortal\\Images\\" + file.getOriginalFilename());
+            file.transferTo(upload);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

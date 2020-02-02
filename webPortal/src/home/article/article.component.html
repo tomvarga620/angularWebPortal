@@ -1,5 +1,7 @@
 <article *ngFor="let article of articles" (click)="openArticle(article.id)" class="article">
-  <div class="articleImage"></div>
+  <div class="articleImage">
+    <img src="">
+  </div>
   <div class="articleTextWrap">
     <h1 class="articleHeading">{{ article.title }}</h1>
     <span class="articleText">{{ article.content.substring(0, 100) + " . . ."}} </span>

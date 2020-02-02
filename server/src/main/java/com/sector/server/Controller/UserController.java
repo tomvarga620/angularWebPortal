@@ -48,4 +48,19 @@ public class UserController {
             throw new UnauthorizedRequestException("Bad Login");
         }
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteUser/{token}/{id}")
+    public void deleteUser(@PathVariable(value = "id") Long id, @PathVariable String token) {
+        for (UserLogin u: loggedUsersArray) {
+            if (u.getToken().toString().equals(token)) {
+                User user = userDao.findByEmail(u.getUsername());
+
+                if (user.isPrivilege()) {
+                    userDao.deleteById(id);
+                }
+                throw new UnauthorizedRequestException("Bad Login");
+            }
+            throw new UnauthorizedRequestException("Bad Login");
+        }
+    }
 }
