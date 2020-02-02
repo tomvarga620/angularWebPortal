@@ -32,10 +32,10 @@ public class ControllerLogin {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
-    public boolean register(@RequestBody User user) {
+    public void register(@RequestBody User user) {
         if (userDao.findByEmail(user.getEmail()) == null) {
             userDao.save(user);
-            return true;
+            return;
         } throw new UnauthorizedRequestException("User Already Exist");
     }
 
@@ -45,13 +45,13 @@ public class ControllerLogin {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/logout/{token}")
-    public boolean logout(@PathVariable(name = "token") String token) {
+    public void logout(@PathVariable(name = "token") String token) {
 
         System.out.println(token);
         for (UserLogin u: loggedUsersArray) {
             if (u.getToken().toString().equals(token)) {
                 loggedUsersArray.remove(u);
-                return true;
+                return;
             }
         }
         throw new UnauthorizedRequestException("Bad Login");
