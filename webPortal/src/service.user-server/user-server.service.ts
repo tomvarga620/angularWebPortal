@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { EMPTY, Observable, throwError } from 'rxjs';
+import { EMPTY, Observable, throwError, of } from 'rxjs';
 import { LoginAuth } from 'src/app/entities/loginAuth';
-import { catchError, mapTo, tap, map } from 'rxjs/operators';
+import { catchError, mapTo, tap, map, switchMap, switchMapTo } from 'rxjs/operators';
 import { User } from '../app/entities/User';
 import { Article } from 'src/app/entities/Article';
 import { error } from 'util';
@@ -70,6 +70,15 @@ export class UserServerService {
       .pipe(
         //map(jsonObj => this.fromJsonToListUsers(jsonObj)),
         catchError(error => this.httpErrorProcess(error)));
+  }
+
+  deleteUser(user: User): Observable<User> {
+    return this.http
+    .delete<void>(this.url + 'deleteUser/' + this.token + '/' + user.id)
+    .pipe(
+      switchMapTo(of(undefined)),
+      catchError(error => this.httpErrorProcess(error))
+    );
   }
 
   upLoadImage(data: FormData): Observable<void> {

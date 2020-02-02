@@ -4,6 +4,7 @@ export class User {
         public username: string = '' ,
         public email: string = '',
         public password: string = '',
-        public privilage?: boolean
+        public privilage?: boolean,
+        public id: number = null
     ) {}
 }
