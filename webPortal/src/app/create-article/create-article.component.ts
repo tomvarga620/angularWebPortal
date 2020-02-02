@@ -19,7 +19,7 @@ export class CreateArticleComponent implements OnInit {
   constructor(private userServerService: UserServerService, private errorMessage: SnackbarService) { }
 
   ngOnInit() {
-  } 
+  }
 
   getFile(event) {
     if(event.target.files[0].type === 'image/png' || event.target.files[0].type === 'image/jpg') {

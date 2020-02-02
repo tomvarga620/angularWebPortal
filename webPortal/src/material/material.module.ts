@@ -11,13 +11,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatIconModule,
     MatTableModule,
     MatSnackBarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    //MatIconModule,
   ],
   exports: [
     MatIconModule,
     MatTableModule,
     MatSnackBarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    //MatIconModule
   ]
 })
 export class MaterialModule { }
