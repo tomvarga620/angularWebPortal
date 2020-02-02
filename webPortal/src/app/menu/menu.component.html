@@ -7,7 +7,8 @@
         <a routerLink='/createArticle' routerLinkActive="active" *ngIf='show'><li>Create Article</li></a>
         
         <span *ngIf="loggedUser; else elseBlock">
-                <strong>{{loggedUser}}</strong> <a [routerLink]="" (click)="logout()">Logout</a>
+                <strong>{{loggedUser}} </strong>
+                <a [routerLink]="" (click)="logout()">Logout</a>
         </span>
 
         <ng-template #elseBlock>
