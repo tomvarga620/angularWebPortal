@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -41,7 +40,10 @@ public class UserController {
                 User user = userDao.findByEmail(u.getUsername());
 
                 if (user.isPrivilege()) {
-                    Optional<User> updatedUser = userDao.findById(editedUser.getId());
+                    User updatedUser = userDao.findById(editedUser.getId()).get();
+                    updatedUser = editedUser;
+                    userDao.save(updatedUser);
+                    return;
                 }
                 throw new UnauthorizedRequestException("Bad Login");
             }
@@ -57,6 +59,7 @@ public class UserController {
 
                 if (user.isPrivilege()) {
                     userDao.deleteById(id);
+                    return;
                 }
                 throw new UnauthorizedRequestException("Bad Login");
             }
