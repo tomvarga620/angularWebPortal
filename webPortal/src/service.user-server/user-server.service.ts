@@ -121,15 +121,16 @@ export class UserServerService {
   }
 
   httpErrorToMesage(error: HttpErrorResponse): void {
+    // console.log('ERROR ' + error.error.message);
     if (error.status === 0) {
       this.snackBarService.errorMessage('Server je nedostupný');
       return;
     }
     if (error.status >= 400 && error.status < 500) {
       if (error.error.errorMessage) {
-       this.snackBarService.errorMessage(error.error.errorMessage);
+       this.snackBarService.errorMessage(error.error.message);
       } else {
-       this.snackBarService.errorMessage(error.error.errorMessage);
+       this.snackBarService.errorMessage(error.error.message);
       }
       return;
     }

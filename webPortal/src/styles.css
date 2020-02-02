@@ -2,3 +2,11 @@
 
 html, body { height: 100%; }
 body { margin: 0;font-family: 'Tomorrow', sans-serif; color:white}
+
+.greenSnackBarAction .mat-simple-snackbar-action .mat-button-wrapper {
+    color: lime;
+  }
+  .redSnackBarAction .mat-simple-snackbar-action .mat-button-wrapper {
+    color: tomato;
+  }
+  

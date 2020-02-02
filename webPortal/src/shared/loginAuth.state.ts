@@ -6,13 +6,15 @@ import { tap } from 'rxjs/operators';
 export interface LoginAuthModel {
     username: string;
     token: string;
+    privilage: boolean;
 }
 
 @State<LoginAuthModel>({
     name: 'login',
     defaults: {
         username: null,
-        token: null
+        token: null,
+        privilage: false
     }
 })
 
@@ -28,6 +30,11 @@ export class LoginAuthState {
         return current.token;
     }
 
+    @Selector()
+    static privilage(current: LoginAuthModel) {
+        return current.privilage;
+    }
+
     constructor(private userServerService: UserServerService) {}
 
     @Action(Login)
@@ -36,7 +43,8 @@ export class LoginAuthState {
             tap(obj => {
                 ctx.setState({
                     username: obj.username,
-                    token: obj.token
+                    token: obj.token,
+                    privilage: obj.privilage
                 });
             })
         );
@@ -49,7 +57,8 @@ export class LoginAuthState {
             tap(() => {
                 ctx.setState({
                     username: null,
-                    token: null
+                    token: null,
+                    privilage: null
                 });
             })
         );

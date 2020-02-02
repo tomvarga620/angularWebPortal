@@ -13,7 +13,7 @@ export class CreateArticleComponent implements OnInit {
   constructor(private userServerService: UserServerService) { }
 
   ngOnInit() {
-  } 
+  }
 
   getFile(event) {
     this.file = <File>event.target.files[0];
