@@ -18,6 +18,6 @@
             </span>
         </ng-template>
 
-        <a routerLink="/registration" routerLinkActive="active"><li>Sign up</li></a>
+        <a routerLink="/registration" routerLinkActive="active" *ngIf = "!loggedUser"><li>Sign up</li></a>
     </ul>
 </nav>

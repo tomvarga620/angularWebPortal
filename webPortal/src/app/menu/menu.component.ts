@@ -18,6 +18,7 @@ export class MenuComponent implements OnInit {
   @Select(LoginAuthState.username) username$;
 
   constructor(private store: Store, private router: Router , private action$: Actions ) {
+
     // after logout
     this.action$.pipe(ofActionSuccessful(Logout)).subscribe( () => {
       this.show = this.store.selectSnapshot(LoginAuthState.privilage);
