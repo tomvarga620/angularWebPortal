@@ -20,20 +20,26 @@
             <input type="text"
                 matInput 
                 placeholder="Category Name"  
-                required>
+                required
+                name="category"
+                [(ngModel)]="category">
         </mat-form-field>
         <mat-form-field>
             <textarea 
                 matInput 
                 placeholder="Description"  
-                required>
+                required
+                name="description"
+                [(ngModel)]="description">
             </textarea>
         </mat-form-field>
         <mat-form-field>
             <textarea 
                 matInput 
-                placeholder="Article Cntent"  
-                required>
+                placeholder="Article Content"  
+                required
+                name="content"
+                [(ngModel)]="content">
             </textarea>
         </mat-form-field>
         <mat-form-field>
