@@ -16,6 +16,7 @@ export class ArticleDetailComponent implements OnInit {
   constructor(private serverService: UserServerService, private route: ActivatedRoute) { }
 
   article: Article;
+  displayedImage ='assets/img/';
 
   ngOnInit() {
     //console.log(article);
@@ -27,5 +28,6 @@ export class ArticleDetailComponent implements OnInit {
 
     console.log(this.serverService.loadArticle());
     this.article = this.serverService.loadArticle();
+    this.displayedImage += this.article.imgUrl;
   }
 }

@@ -47,7 +47,7 @@ public class ControllerArticle {
     public void upLoadImage(@RequestBody MultipartFile file) {
         System.out.println(file.getOriginalFilename());
         try {
-            File upload = new File("C:\\Users\\MI\\Desktop\\angularWebPortal\\Images\\" + file.getOriginalFilename());
+            File upload = new File("C:\\Users\\MI\\Desktop\\angularWebPortal\\webPortal\\src\\assets\\img\\" + file.getOriginalFilename());
             file.transferTo(upload);
         } catch (IOException e) {
             e.printStackTrace();

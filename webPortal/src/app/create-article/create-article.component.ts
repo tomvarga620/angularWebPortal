@@ -58,7 +58,7 @@ export class CreateArticleComponent implements OnInit {
   }
 
   getFile(event) {
-    if(event.target.files[0].type === 'image/png' || event.target.files[0].type === 'image/jpg') {
+    if(event.target.files[0].type === 'image/png' || event.target.files[0].type === 'image/jpg' || event.target.files[0].type === 'image/jpeg') {
       this.isFile = true;
       this.file = <File>event.target.files[0];
       this.data = new FormData();
@@ -92,7 +92,7 @@ export class CreateArticleComponent implements OnInit {
       this.category.value,
       this.title.value,
       date,
-      //imageUrl
+      'assets/img/' + this.file.name,
       this.author.value,
       this.description.value,
       this.content.value
