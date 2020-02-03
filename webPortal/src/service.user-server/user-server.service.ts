@@ -100,8 +100,8 @@ export class UserServerService {
     return users;
   }
 */
-  postArticle(article: Article): void {
-    this.http.post(this.url + 'postArticle/' + this.token, article)
+  postArticle(article: Article): Observable<void> {
+    return this.http.post<void>(this.url + 'postArticle/' + this.token, article)
       .pipe(
         catchError(error => this.httpErrorProcess(error))
       );
