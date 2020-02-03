@@ -42,6 +42,25 @@ textarea {
     color:white;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    font-size:15px;
+    font-family: 'Tomorrow', sans-serif;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-size:15px;
+    font-family: 'Tomorrow', sans-serif;
+    color: white;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    font-size:15px;
+    font-family: 'Tomorrow', sans-serif;
+    color: white;
+  }
+
 .formWrap mat-form-field {
     text-align:center;
     width:100%;
@@ -63,3 +82,11 @@ button[type="submit"]:hover{
     border: 2px solid black;
     color:black;
 }
+
+.is-invalid {
+    border-bottom: 1.5px solid red !important;
+  }
+
+  .is-valid{
+    border-bottom: 1.5px solid white !important;
+  }

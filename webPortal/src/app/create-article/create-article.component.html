@@ -1,19 +1,21 @@
 <section class="formWrap">
-    <form (ngSubmit)="postArticle()" [(ngModel)]="form">
+    <form (ngSubmit)="postArticle()" [formGroup] = "articleForm">
         <mat-form-field>
             <input type="text"
                 matInput 
                 placeholder="Author Name"  
                 required
                 name="author"
-                [(ngModel)]="author">
+                formControlName="author"
+                [ngClass]="{'is-invalid': author.touched || author.dirty && !author.errors , 'is-valid': author.valid}">
         </mat-form-field>
         <mat-form-field>
             <input matInput type="text"  
                 placeholder="Title Name"  
                 required
                 name="title"
-                [(ngModel)]="title">
+                formControlName="title"
+                [ngClass]="{'is-invalid': title.touched || title.dirty && !title.errors , 'is-valid': title.valid}">
         </mat-form-field>
         <mat-form-field>
             <input type="text"
@@ -21,23 +23,29 @@
                 placeholder="Category Name"  
                 required
                 name="category"
-                [(ngModel)]="category">
+                formControlName="category"
+                [ngClass]="{'is-invalid': category.touched || category.dirty && !category.errors , 'is-valid': category.valid}">
         </mat-form-field>
         <mat-form-field>
             <textarea 
-                placeholder="Description"  
+                placeholder="Description Content"  
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Description Content'"
                 required
                 name="description"
-                [(ngModel)]="description">
+                formControlName="description"
+                [ngClass]="{'is-invalid': description.touched || description.dirty && !description.errors , 'is-valid': description.valid}">
             </textarea>
         </mat-form-field>
         <mat-form-field>
             <textarea 
-                matInput 
                 placeholder="Article Content"  
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Article Content'"
                 required
                 name="content"
-                [(ngModel)]="content">
+                formControlName="content"
+                [ngClass]="{'is-invalid': content.touched || content.dirty && !content.errors , 'is-valid': content.valid}">
             </textarea>
         </mat-form-field>
         <mat-form-field>
