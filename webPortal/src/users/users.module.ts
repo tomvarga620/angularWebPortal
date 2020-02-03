@@ -9,8 +9,8 @@ import { UsersEditComponent } from './users-edit/users-edit.component';
   declarations: [UsersTableComponent, UsersEditComponent],
   imports: [
   CommonModule,
-    UsersRoutingModule,
-    MaterialModule
+    MaterialModule,
+    UsersRoutingModule
   ]
 })
 export class UsersModule { }
