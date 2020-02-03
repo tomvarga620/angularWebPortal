@@ -1,4 +1,4 @@
-<div>
+<section class="formWrap">
     <form (ngSubmit)="postArticle()" [(ngModel)]="form">
         <mat-form-field>
             <input type="text"
@@ -14,7 +14,7 @@
                 placeholder="Title Name"  
                 required
                 name="title"
-                [(ngModel)]="title">>
+                [(ngModel)]="title">
         </mat-form-field>
         <mat-form-field>
             <input type="text"
@@ -26,7 +26,6 @@
         </mat-form-field>
         <mat-form-field>
             <textarea 
-                matInput 
                 placeholder="Description"  
                 required
                 name="description"
@@ -51,4 +50,4 @@
             Post
         </button>
     </form>
-</div>
+</section>
