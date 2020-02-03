@@ -1,6 +1,6 @@
 <article *ngFor="let article of articles" (click)="openArticle(article.id)" class="article">
   <div class="articleImage">
-    <img src="">
+    <img [src]="article.imgUrl" height="300px" width="430px">
   </div>
   <div class="articleTextWrap">
     <h1 class="articleHeading">{{ article.title }}</h1>
