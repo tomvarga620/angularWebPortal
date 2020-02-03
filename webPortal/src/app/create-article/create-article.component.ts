@@ -66,7 +66,7 @@ export class CreateArticleComponent implements OnInit {
       console.log(this.file.name);
 
     } else {
-      this.errorMessage.errorMessage('Wrong type bro!')
+      this.errorMessage.errorMessage('Wrong type bro!');
     }
   }
 

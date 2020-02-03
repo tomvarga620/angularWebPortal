@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/entities/User';
 import { UserServerService } from '../../service.user-server/user-server.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-table',
@@ -16,8 +17,8 @@ export class UsersTableComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource<User>();
 
-  constructor(private userServerService: UserServerService) { }
-
+  constructor(private userServerService: UserServerService, private router: Router) { }
+  user: User;
   ngOnInit() {
     console.log('table work');
   }
@@ -32,6 +33,14 @@ export class UsersTableComponent implements OnInit {
       this.userServerService.deleteUser(user).subscribe(() => {
           this.dataSource.data = this.dataSource.data.filter(u => u !== user);
       });
+  }
+  openEdit(user: User) {
+    if (user != null) {
+      this.userServerService.saveUser(user);
+      this.router.navigateByUrl('/useredit/' + user.id);
+    } else {
+      return null;
+    }
   }
 
 }

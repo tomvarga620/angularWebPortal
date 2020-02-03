@@ -7,8 +7,7 @@ import { ArticlesHolderComponent } from './articles-holder/articles-holder.compo
 
 const routes: Routes = [
   {path: '', component: ArticlesHolderComponent},
-  {path: 'article/:id', component: ArticleDetailComponent},
-  {path: '', component: HomeMainComponent}
+  {path: 'article/:id', component: ArticleDetailComponent}
 ];
 
 @NgModule({

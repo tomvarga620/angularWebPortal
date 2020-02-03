@@ -24,5 +24,4 @@ export class ArticleComponent implements OnInit {
     this.router.navigateByUrl('/article/' + id);
     //this.router.navigate(['/article/' + id, JSON.stringify(this.article)]);
   }
-
 }

@@ -14,6 +14,8 @@ import { SnackbarService } from './snackbar.service';
 })
 export class UserServerService {
   private articleToDetail: Article;
+  private userToEdit: User;
+
   url = 'http://localhost:8080/';
   constructor(private http: HttpClient, private store: Store, private snackBarService: SnackbarService) { }
 
@@ -35,6 +37,14 @@ export class UserServerService {
 
   loadArticle() {
     return this.articleToDetail;
+  }
+
+  saveUser(user: User) {
+    this.userToEdit = user;
+  }
+
+  loadUser() {
+    return this.userToEdit;
   }
 
   logout(): Observable<void> {

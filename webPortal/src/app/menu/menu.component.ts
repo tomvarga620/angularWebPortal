@@ -28,6 +28,7 @@ export class MenuComponent implements OnInit {
     // after login
     this.action$.pipe(ofActionSuccessful(Login)).subscribe( () => {
         this.show = this.store.selectSnapshot(LoginAuthState.privilage);
+        console.log(this.show);
     });
   }
 
