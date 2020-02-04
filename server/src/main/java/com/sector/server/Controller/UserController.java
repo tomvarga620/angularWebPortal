@@ -35,6 +35,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/editUser/{token}")
     public void editUser(@PathVariable(value = "token") String token, @RequestBody User editedUser) {
+        System.out.println(editedUser);
         for (UserLogin u: loggedUsersArray) {
             if (u.getToken().toString().equals(token)) {
                 User user = userDao.findByEmail(u.getUsername());
@@ -61,7 +62,7 @@ public class UserController {
                     userDao.deleteById(id);
                     return;
                 }
-                throw new UnauthorizedRequestException("Bad Login");
+                throw new UnauthorizedRequestException("Wrong data");
             }
             throw new UnauthorizedRequestException("Bad Login");
         }
