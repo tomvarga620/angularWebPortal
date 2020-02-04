@@ -19,11 +19,13 @@
         required formControlName = "email"
         [ngClass]="{'is-invalid': email.touched || email.dirty && !email.errors , 'is-valid': email.valid}">
 
-
-        <input type="text" name="privilege" placeholder="Privilege" 
-        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Privilege'" 
-        required formControlName = "privilage"
-        [ngClass]="{'is-invalid': privilage.touched || privilage.dirty && !privilage.errors , 'is-valid': privilage.valid}">
+        <mat-checkbox
+        required
+        formControlName="privilege"
+        >
+        Checked
+        </mat-checkbox
+        >
 
         <button type="submit">Submit</button>
     </form> 

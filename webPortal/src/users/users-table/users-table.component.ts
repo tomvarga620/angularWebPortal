@@ -14,7 +14,7 @@ export class UsersTableComponent implements OnInit {
     'id',
     'email',
     'name',
-    'privilage'
+    'privilege'
   ];
   dataSource = new MatTableDataSource<User>();
 
@@ -27,6 +27,7 @@ export class UsersTableComponent implements OnInit {
   ngAfterViewInit(): void {
     this.userServerService.getUsers().subscribe(users => {
       this.dataSource.data = users;
+      console.log(users);
     });
   }
 
