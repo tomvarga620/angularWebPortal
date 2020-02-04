@@ -21,11 +21,11 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    password: new FormControl('',Validators.required)
+    password: new FormControl('', Validators.required)
   });
 
   ngOnInit() {
-
+    this.checkLogin();
   }
 
   get name() {
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   formSubmit() {
     this.loginAuth.username = this.name.value;
     this.loginAuth.password = this.password.value;
-  
+
     this.store.dispatch(new Login(this.loginAuth)).subscribe(() => {
       if (this.store.selectSnapshot(LoginAuthState.username)) {
           console.log('login succesfull');
@@ -47,4 +47,11 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+  checkLogin() {
+    if (this.store.selectSnapshot(LoginAuthState.token)) {
+      this.router.navigateByUrl('/');
+    }
+  }
+
 }

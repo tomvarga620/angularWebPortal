@@ -19,11 +19,17 @@
         required formControlName = "email"
         [ngClass]="{'is-invalid': email.touched || email.dirty && !email.errors , 'is-valid': email.valid}">
 
+        <br>
+
+        <span>Privilege</span>
+
+        <br>
+
         <mat-checkbox
         required
         formControlName="privilege"
         >
-        Checked
+        Admin
         </mat-checkbox
         >
 
