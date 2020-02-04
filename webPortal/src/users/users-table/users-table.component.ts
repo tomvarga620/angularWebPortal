@@ -13,7 +13,8 @@ export class UsersTableComponent implements OnInit {
   displayedColumns: string[] = [
     'id',
     'email',
-    'name'
+    'name',
+    'privilage'
   ];
   dataSource = new MatTableDataSource<User>();
 

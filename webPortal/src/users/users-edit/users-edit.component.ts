@@ -39,13 +39,32 @@ export class UsersEditComponent implements OnInit {
     return this.editForm.get('privilage');
   }
 
-
   constructor(private userServerService: UserServerService) { }
 
   ngOnInit() {
     // console.log(this.userServerService.loadUser());
     this.user = this.userServerService.loadUser();
+    console.log(this.user);
+    this.name.setValue(this.user.name);
+    this.password.setValue(this.user.password);
+    this.email.setValue(this.user.email);
+    this.privilage.setValue(this.user.privilage);
   }
 
-  submitForm(){}
+  submitForm() {
+    const userTosend = new User(
+      this.user.name,
+      this.user.password,
+      this.user.email,
+      this.user.privilage,
+      this.user.id
+    );
+
+    console.log(userTosend);
+
+    this.userServerService.editUser2(userTosend).subscribe((response) => {
+      console.log(response);
+    });
+  }
+
 }

@@ -8,7 +8,7 @@
         required formControlName = "name"
         [ngClass]="{'is-invalid': name.touched || name.dirty && !name.errors , 'is-valid': name.valid}">
 
-        <input type="password" name="password" placeholder="Password" 
+        <input type="text" name="password" placeholder="Password" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" 
         required formControlName = "password"
         [class.is-invalid]="password.touched || password.dirty && !password.errors "

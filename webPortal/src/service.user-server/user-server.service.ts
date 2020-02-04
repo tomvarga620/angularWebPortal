@@ -126,8 +126,17 @@ export class UserServerService {
     this.http.put(this.url + 'editUser/' + this.token, user)
       .pipe(
         catchError(error => this.httpErrorProcess(error))
-      )
+      );
   }
+
+
+  editUser2(user: User): Observable<void> {
+    return this.http.put<void>(this.url + 'editUser/' + this.token, user)
+      .pipe(
+        catchError(error => this.httpErrorProcess(error))
+      );
+  }
+
 
   httpErrorProcess(error) {
     console.log(JSON.stringify(error));
