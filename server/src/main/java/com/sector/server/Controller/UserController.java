@@ -1,6 +1,7 @@
 package com.sector.server.Controller;
 import com.sector.server.Entities.loginEntity.User;
 import com.sector.server.Entities.loginEntity.UserLogin;
+import com.sector.server.Exeption.UnAuthorizedJson;
 import com.sector.server.Exeption.UnauthorizedRequestException;
 import com.sector.server.repositories.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,9 +63,10 @@ public class UserController {
                     userDao.deleteById(id);
                     return;
                 }
-                throw new UnauthorizedRequestException("Wrong data");
+                throw new UnauthorizedRequestException("Bad Login");
             }
             throw new UnauthorizedRequestException("Bad Login");
         }
+        throw new UnAuthorizedJson("Wrong request");
     }
 }

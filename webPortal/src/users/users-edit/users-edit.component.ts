@@ -53,10 +53,10 @@ export class UsersEditComponent implements OnInit {
 
   submitForm() {
     const userTosend = new User(
-      this.user.name,
-      this.user.email,
-      this.user.password,
-      this.user.privilege,
+      this.name.value,
+      this.email.value,
+      this.password.value,
+      this.privilage.value,
       this.user.id
     );
 
