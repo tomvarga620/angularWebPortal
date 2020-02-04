@@ -20,7 +20,7 @@ export class UsersEditComponent implements OnInit {
       Validators.email,
       Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}')
       ]),
-    privilage: new FormControl('', [Validators.required, Validators.pattern('0|1')]),
+    privilege: new FormControl('', Validators.required),
   });
 
   get name() {
@@ -36,7 +36,7 @@ export class UsersEditComponent implements OnInit {
   }
 
   get privilage() {
-    return this.editForm.get('privilage');
+    return this.editForm.get('privilege');
   }
 
   constructor(private userServerService: UserServerService) { }
@@ -48,19 +48,19 @@ export class UsersEditComponent implements OnInit {
     this.name.setValue(this.user.name);
     this.password.setValue(this.user.password);
     this.email.setValue(this.user.email);
-    this.privilage.setValue(this.user.privilage);
+    this.privilage.setValue(this.user.privilege);
   }
 
   submitForm() {
     const userTosend = new User(
       this.user.name,
-      this.user.password,
       this.user.email,
-      this.user.privilage,
+      this.user.password,
+      this.user.privilege,
       this.user.id
     );
 
-    console.log(userTosend);
+    console.log(`User to send EditUser service ${userTosend}`);
 
     this.userServerService.editUser2(userTosend).subscribe((response) => {
       console.log(response);
