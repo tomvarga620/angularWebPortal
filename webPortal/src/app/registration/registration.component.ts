@@ -74,7 +74,7 @@ export class RegistrationComponent implements OnInit,CanDeactivateComponent {
 
   canDeactivate(): boolean | Observable<boolean> {
       console.log("Guard Ide");
-      if(this.toServer) { return true; }
+      if (this.toServer) { return true; }
 
       if (this.name.value && this.email.value && this.password.value && this.password2.value) {
         return true;

@@ -37,7 +37,7 @@ export class UsersTableComponent implements OnInit {
   openEdit(user: User) {
     if (user != null) {
       this.userServerService.saveUser(user);
-      this.router.navigateByUrl('/useredit/' + user.id);
+      this.router.navigateByUrl('users/useredit/' + user.id);
     } else {
       return null;
     }
