@@ -1,9 +1,10 @@
 <section class="wrapper">
-    <form (ngSubmit) = "formSubmit()"class="regForm" [formGroup] = "regForm">
+    <form (ngSubmit) = "formSubmit()" class="regForm" [formGroup] = "regForm">
 
         <h1>Sign up</h1>
 
-        <input type="text" name="username" placeholder="Username" 
+        <input type="text" name="username" 
+        placeholder="Username" 
         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" 
         required formControlName = "name"
         [ngClass]="{'is-invalid': name.touched || name.dirty && !name.errors , 'is-valid': name.valid}">
@@ -30,7 +31,7 @@
             {{password.errors.weakPassword}}
         </span>
 
-        <input type="submit" value="Submit">
+        <input [disabled]="regForm?.invalid" type="submit" value="Submit">
         
     </form> 
 </section>

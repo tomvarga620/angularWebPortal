@@ -58,6 +58,11 @@
     font-family: 'Tomorrow', sans-serif;
 }
 
+.regForm input[type="submit"]:disabled {
+  opacity:0.3;
+  pointer-events: none;
+}
+
 .regForm input[type="submit"]:hover{
     background:white;
     border: 2px solid black;
@@ -94,3 +99,4 @@
   .is-valid{
     border-bottom: 1.5px solid white !important;
   }
+

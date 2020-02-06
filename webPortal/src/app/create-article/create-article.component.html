@@ -1,43 +1,44 @@
 <section class="formWrap">
-    <form (ngSubmit)="postArticle()" [formGroup] = "articleForm">
-            <input type="text"
+    <form (ngSubmit) = "postArticle()" [formGroup] = "articleForm">
+            <input type="text" 
                 placeholder="Author name" 
                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Author name'" 
                 required
-                name="author"
                 formControlName="author"
                 [ngClass]="{'is-invalid': author.touched || author.dirty && !author.errors , 'is-valid': author.valid}">
-            <input type="text"  
+
+            <input type="text"
                 placeholder="Title Name" 
                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Title Name'"
                 required
-                name="title"
                 formControlName="title"
                 [ngClass]="{'is-invalid': title.touched || title.dirty && !title.errors , 'is-valid': title.valid}">
+
             <input type="text"
                 placeholder="Category Name" 
                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Category Name'"
                 required
-                name="category"
                 formControlName="category"
                 [ngClass]="{'is-invalid': category.touched || category.dirty && !category.errors , 'is-valid': category.valid}">
+
             <textarea 
                 placeholder="Description Content"  
                 onfocus="this.placeholder = ''"
                 onblur="this.placeholder = 'Description Content'"
                 required
-                name="description"
                 formControlName="description"
                 [ngClass]="{'is-invalid-textarea': description.touched || description.dirty && !description.errors , 'is-valid-textarea': description.valid}">
+
             </textarea>
+
             <textarea 
                 placeholder="Article Content" 
                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Article Content'"
                 required
-                name="content"
                 formControlName="content"
                 [ngClass]="{'is-invalid-textarea': content.touched || content.dirty && !content.errors , 'is-valid-textarea': content.valid}">
             </textarea>
+            
             <p>Choose file: </p>
             <input type="file" (change)="getFile($event)">
             <!--<input type="button" value="upload" (click)="uploadFile()">-->

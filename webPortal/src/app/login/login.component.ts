@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { LoginAuth } from '../entities/loginAuth';
 import { Store } from '@ngxs/store';
 import { Login } from 'src/shared/loginAuth.actions';
-import { Router } from '@angular/router';
+import { Router, CanDeactivate } from '@angular/router';
 import { LoginAuthState } from 'src/shared/loginAuth.state';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import * as zxcvbn from 'zxcvbn';
+import { CanDeactivateComponent } from '../guard/deactivate-guard.guard';
 
 @Component({
   selector: 'app-login',

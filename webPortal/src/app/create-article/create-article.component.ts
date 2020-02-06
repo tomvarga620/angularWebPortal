@@ -59,14 +59,13 @@ export class CreateArticleComponent implements OnInit {
   }
 
   getFile(event) {
-    if(event.target.files[0].type === 'image/png' || event.target.files[0].type === 'image/jpg' || event.target.files[0].type === 'image/jpeg') {
+    if (event.target.files[0].type === 'image/png' || event.target.files[0].type === 'image/jpg' || event.target.files[0].type === 'image/jpeg') {
       this.isFile = true;
       this.file = <File>event.target.files[0];
       this.data = new FormData();
       this.data.append( 'file', this.file, this.file.name);
       console.log(this.file.name);
-      this.errorMessage.successMessage("Article has been added");
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl(`/`);
 
     } else {
       this.errorMessage.errorMessage('Wrong type bro!');
@@ -94,7 +93,6 @@ export class CreateArticleComponent implements OnInit {
 
     this.userServerService.postArticle(article)
       .subscribe(response => this.uploadFile(response.id)
-
     );
   }
 }

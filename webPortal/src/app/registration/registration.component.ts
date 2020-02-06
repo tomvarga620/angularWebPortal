@@ -6,6 +6,7 @@ import { UserServerService } from '../../service.user-server/user-server.service
 import { Router } from '@angular/router';
 import { CanDeactivateComponent } from '../guard/deactivate-guard.guard';
 import { Observable } from 'rxjs';
+import { SnackbarService } from '../../service.user-server/snackbar.service';
 
 @Component({
   selector: 'app-registration',
@@ -17,7 +18,7 @@ export class RegistrationComponent implements OnInit,CanDeactivateComponent {
   passwordMessage = '';
   toServer = false;
 
-  constructor(private userServerService: UserServerService, private router: Router) { }
+  constructor(private userServerService: UserServerService, private router: Router, private message: SnackbarService) { }
 
   regForm = new FormGroup({
 
@@ -29,8 +30,9 @@ export class RegistrationComponent implements OnInit,CanDeactivateComponent {
     ]),
     password: new FormControl('', this.passValidator()),
     password2: new FormControl('')
-
-  });
+    },
+      this.passwordsMatchValidator
+  );
 
   get name() {
     return this.regForm.get('name');
@@ -59,7 +61,10 @@ export class RegistrationComponent implements OnInit,CanDeactivateComponent {
       this.password.value
     );
     return this.userServerService.register(user)
-    .subscribe(() => this.router.navigateByUrl('/login'));
+    .subscribe(() => {
+     this.message.successMessage(`Successful registration, ${this.name.value}`);
+     this.router.navigateByUrl('/login');
+    });
   }
 
   passValidator(): ValidatorFn {
@@ -70,6 +75,18 @@ export class RegistrationComponent implements OnInit,CanDeactivateComponent {
       this.passwordMessage = message;
       return passTest.score > 3 ? { weakPassword : message} : null;
     };
+  }
+
+  passwordsMatchValidator(control: FormGroup): ValidationErrors {
+    const password = control.get('password');
+    const password2 = control.get('password2');
+    if (password.value === password2.value) {
+      password2.setErrors(null);
+      return null;
+    } else {
+      password2.setErrors({ differentPasswords: 'Passwords do not match' });
+      return { differentPasswords: 'Passwords do not match' };
+    }
   }
 
   canDeactivate(): boolean | Observable<boolean> {
