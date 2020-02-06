@@ -4,6 +4,7 @@ import { SnackbarService } from 'src/service.user-server/snackbar.service';
 import { Login } from 'src/shared/loginAuth.actions';
 import { Article } from '../entities/Article';
 import { FormGroup, FormControlName, FormControl, Validators, ValidatorFn } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-article',
@@ -52,7 +53,7 @@ export class CreateArticleComponent implements OnInit {
     return this.articleForm.get('content');
   }
 
-  constructor(private userServerService: UserServerService, private errorMessage: SnackbarService) { }
+  constructor(private userServerService: UserServerService, private errorMessage: SnackbarService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -64,6 +65,8 @@ export class CreateArticleComponent implements OnInit {
       this.data = new FormData();
       this.data.append( 'file', this.file, this.file.name);
       console.log(this.file.name);
+      this.errorMessage.successMessage("Article has been added");
+      this.router.navigateByUrl('/');
 
     } else {
       this.errorMessage.errorMessage('Wrong type bro!');
