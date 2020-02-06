@@ -91,8 +91,8 @@ export class UserServerService {
     );
   }
 
-  upLoadImage(data: FormData): Observable<void> {
-    return this.http.post<void>(this.url + 'uploadImage', data)
+  upLoadImage(data: FormData, id: number): Observable<void> {
+    return this.http.post<void>(this.url + 'uploadImage/' + id, data)
       .pipe(
         catchError(error => this.httpErrorProcess(error))
       );
@@ -110,8 +110,8 @@ export class UserServerService {
     return users;
   }
 */
-  postArticle(article: Article): Observable<void> {
-    return this.http.post<void>(this.url + 'postArticle/' + this.token, article)
+  postArticle(article: Article): Observable<Article> {
+    return this.http.post<Article>(this.url + 'postArticle/' + this.token, article)
       .pipe(
         catchError(error => this.httpErrorProcess(error))
       );

@@ -1,7 +1,7 @@
 <article class="articleDetail">
     <h1 class="articleHeading">{{ article.title }}</h1>
     <div class="image">
-        <img [src]="article.imgUrl" height="300px" width="430px">
+        <img [src]="'data:image/jpg;base64,' + article.file" height="340px" width="600px">
     </div>
     <h3 class="articleAfterTitle">{{ article.description }}</h3>
     <div class="content" class="articleText">{{ article.content }}</div>

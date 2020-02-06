@@ -15,7 +15,9 @@ export class ArticleComponent implements OnInit {
   constructor(private serverService: UserServerService, private router: Router) { }
 
   ngOnInit() {
-    this.serverService.getAllArticles().subscribe(articles => this.articles = articles);
+    this.serverService.getAllArticles().subscribe(articles => {
+      this.articles = articles;    
+    });
   }
 
   openArticle(id: number) {

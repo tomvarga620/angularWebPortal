@@ -62,7 +62,7 @@ export class CreateArticleComponent implements OnInit {
       this.isFile = true;
       this.file = <File>event.target.files[0];
       this.data = new FormData();
-      this.data.append('file', this.file, this.file.name);
+      this.data.append( 'file', this.file, this.file.name);
       console.log(this.file.name);
 
     } else {
@@ -70,22 +70,12 @@ export class CreateArticleComponent implements OnInit {
     }
   }
 
-  uploadFile() {
-    this.userServerService.upLoadImage(this.data)
+  uploadFile(id: number) {
+    this.userServerService.upLoadImage(this.data, id)
       .subscribe(() => console.log('REQUEST'));
   }
 
   postArticle() {
-    /*
-    this.article.author = this.author.value;
-    this.article.category = this.category.value;
-    this.article.content = this.content;
-    this.article.date = new Date().toDateString();
-    this.article.description = this.description;
-    this.article.title = this.title;
-    this.article.imgUrl = this.file.name;
-    console.log(this.article);*/
-
     const date = new Date().toDateString();
 
     const article = new Article (
@@ -95,13 +85,13 @@ export class CreateArticleComponent implements OnInit {
       'assets/img/' + this.file.name,
       this.author.value,
       this.description.value,
-      this.content.value
+      this.content.value,
     );
 
-    this.uploadFile();
 
     this.userServerService.postArticle(article)
-      .subscribe(() => console.log("POST ARTICLE"));
-  }
+      .subscribe(response => this.uploadFile(response.id)
 
+    );
+  }
 }

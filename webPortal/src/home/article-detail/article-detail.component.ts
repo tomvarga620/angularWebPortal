@@ -16,18 +16,13 @@ export class ArticleDetailComponent implements OnInit {
   constructor(private serverService: UserServerService, private route: ActivatedRoute) { }
 
   article: Article;
-  displayedImage ='assets/img/';
+  articleId: number;
 
   ngOnInit() {
-    //console.log(article);
-    // this.route.snapshot.paramMap.get('param');
-    // console.log(this.route.snapshot.paramMap.get('param'));
-    // console.log(article);
-    //this.articleId = this.routes.snapshot.params['id'];
-    //this.serverService.getArticleById(this.articleId).subscribe(article => this.article = article);
+    this.route.snapshot.paramMap.get('param');
+    this.articleId = this.route.snapshot.params['id'];
+    this.serverService.getArticleById(this.articleId).subscribe(article => this.article = article);
 
-    console.log(this.serverService.loadArticle());
     this.article = this.serverService.loadArticle();
-    this.displayedImage += this.article.imgUrl;
   }
 }

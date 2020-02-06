@@ -7,5 +7,7 @@ export class Article {
         public author?: string,
         public description?: string,
         public content?: string,
-        public id?: number) {}
+        public id?: number,
+        public file?: Blob) {}
+        
 }

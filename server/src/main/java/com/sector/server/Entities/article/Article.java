@@ -13,6 +13,9 @@ public class Article {
 
     private String imgUrl;
 
+    @Lob
+    private byte[] file;
+
     private String author;
     private String description;
     @Column(columnDefinition = "TEXT")
@@ -21,12 +24,21 @@ public class Article {
     public Article() {
     }
 
-    public Article(String category, String title, String date, String imgUrl, String contentUrl, String author) {
+    public Article(String category, String title, String date, String imgUrl, String contentUrl, String author, byte[] file) {
         this.category = category;
         this.title = title;
         this.date = date;
         this.imgUrl = imgUrl;
         this.author = author;
+        this.file = file;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
     }
 
     public Long getId() {

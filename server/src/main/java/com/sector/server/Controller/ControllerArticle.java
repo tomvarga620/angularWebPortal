@@ -4,12 +4,19 @@ import com.sector.server.Entities.article.Article;
 import com.sector.server.Entities.loginEntity.UserLogin;
 import com.sector.server.Exeption.UnauthorizedRequestException;
 import com.sector.server.repositories.ArticleDao;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.sql.rowset.serial.SerialBlob;
+import javax.sql.rowset.serial.SerialException;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -43,12 +50,10 @@ public class ControllerArticle {
             return articleDao.findById(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/uploadImage")
-    public void upLoadImage(@RequestBody MultipartFile file) {
-        System.out.println(file.getOriginalFilename());
+    @RequestMapping(method = RequestMethod.POST, value = "/uploadImage/{id}")
+    public void upLoadImage(@RequestBody MultipartFile file, @PathVariable(name = "id") Long id) {
         try {
-            File upload = new File("C:\\Users\\MI\\Desktop\\angularWebPortal\\webPortal\\src\\assets\\img\\" + file.getOriginalFilename());
-            file.transferTo(upload);
+            articleDao.insertImage(file.getBytes(), id);
         } catch (IOException e) {
             e.printStackTrace();
         }
