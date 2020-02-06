@@ -34,7 +34,6 @@ export class LoginAuthState {
     static privilage(current: LoginAuthModel) {
         return current.privilage;
     }
-
     constructor(private userServerService: UserServerService) {}
 
     @Action(Login)

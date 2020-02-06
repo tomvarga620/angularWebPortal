@@ -64,7 +64,7 @@ export class UserServerService {
     return this.http
       .post<LoginAuth>(this.url + 'login', auth)
       .pipe(
-        catchError(error => this.httpErrorProcess(error))
+        catchError( error => this.httpErrorProcess(error))
       );
   }
 

@@ -19,7 +19,7 @@ NgxsModule.forRoot(states, {
       }
     }),
     NgxsStoragePluginModule.forRoot({
-      key: ['login.token', 'login.username']
+      key: ['login.token', 'login.username', 'login.privilage']
     }),
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot()
