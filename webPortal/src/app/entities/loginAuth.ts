@@ -3,6 +3,6 @@ export class LoginAuth {
         public username: string = '' ,
         public password?: string,
         public token?: string,
-        public privilage?: boolean
+        public privilage: boolean = false
     ) {}
 }
