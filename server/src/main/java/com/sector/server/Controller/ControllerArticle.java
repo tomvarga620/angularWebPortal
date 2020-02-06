@@ -2,6 +2,7 @@ package com.sector.server.Controller;
 
 import com.sector.server.Entities.article.Article;
 import com.sector.server.Entities.loginEntity.UserLogin;
+import com.sector.server.Exeption.UnAuthorizedJson;
 import com.sector.server.Exeption.UnauthorizedRequestException;
 import com.sector.server.repositories.ArticleDao;
 
@@ -40,9 +41,9 @@ public class ControllerArticle {
                 if (u.getToken().toString().equals(token)) {
                     articleDao.save(article);
                     return article;
-                }
+                }        throw new UnauthorizedRequestException("Bad Login");
             }
-       throw new UnauthorizedRequestException("Bad Login");
+        throw new UnAuthorizedJson("Bad request");
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getArticleById/{id}")

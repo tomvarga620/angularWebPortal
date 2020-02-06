@@ -82,7 +82,7 @@ export class CreateArticleComponent implements OnInit {
       this.category.value,
       this.title.value,
       date,
-      'assets/img/' + this.file.name,
+      '',
       this.author.value,
       this.description.value,
       this.content.value,
