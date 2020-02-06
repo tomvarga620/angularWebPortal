@@ -57,6 +57,7 @@ public class ControllerArticle {
             articleDao.insertImage(file.getBytes(), id);
         } catch (IOException e) {
             e.printStackTrace();
+            throw new UnAuthorizedJson("Bad Request");
         }
     }
 
