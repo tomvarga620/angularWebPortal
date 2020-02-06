@@ -32,6 +32,7 @@
     background: transparent;
     color:white;
     border-bottom: 1.5px solid white;
+    margin: 8px 0;
 }
 
 textarea {
@@ -40,6 +41,8 @@ textarea {
     background:none;
     border:1px solid white;
     color:white;
+    margin-top:30px;
+    padding: 8px 16px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -75,6 +78,7 @@ button[type="submit"] {
     font-size: 16px;
     cursor: pointer;
     font-family: 'Tomorrow', sans-serif;
+    margin-top:30px;
 }
 
 button[type="submit"]:hover{
@@ -89,4 +93,12 @@ button[type="submit"]:hover{
 
   .is-valid{
     border-bottom: 1.5px solid white !important;
+  }
+
+  .is-invalid-textarea {
+    border: 1.5px solid red !important;
+  }
+
+  .is-valid-textarea {
+    border: 1.5px solid white !important;
   }

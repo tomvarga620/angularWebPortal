@@ -1,32 +1,26 @@
 <section class="formWrap">
     <form (ngSubmit)="postArticle()" [formGroup] = "articleForm">
-        <mat-form-field>
             <input type="text"
-                matInput 
-                placeholder="Author Name"  
+                placeholder="Author name" 
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Author name'" 
                 required
                 name="author"
                 formControlName="author"
                 [ngClass]="{'is-invalid': author.touched || author.dirty && !author.errors , 'is-valid': author.valid}">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput type="text"  
-                placeholder="Title Name"  
+            <input type="text"  
+                placeholder="Title Name" 
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Title Name'"
                 required
                 name="title"
                 formControlName="title"
                 [ngClass]="{'is-invalid': title.touched || title.dirty && !title.errors , 'is-valid': title.valid}">
-        </mat-form-field>
-        <mat-form-field>
             <input type="text"
-                matInput 
-                placeholder="Category Name"  
+                placeholder="Category Name" 
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Category Name'"
                 required
                 name="category"
                 formControlName="category"
                 [ngClass]="{'is-invalid': category.touched || category.dirty && !category.errors , 'is-valid': category.valid}">
-        </mat-form-field>
-        <mat-form-field>
             <textarea 
                 placeholder="Description Content"  
                 onfocus="this.placeholder = ''"
@@ -34,25 +28,19 @@
                 required
                 name="description"
                 formControlName="description"
-                [ngClass]="{'is-invalid': description.touched || description.dirty && !description.errors , 'is-valid': description.valid}">
+                [ngClass]="{'is-invalid-textarea': description.touched || description.dirty && !description.errors , 'is-valid-textarea': description.valid}">
             </textarea>
-        </mat-form-field>
-        <mat-form-field>
             <textarea 
-                placeholder="Article Content"  
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Article Content'"
+                placeholder="Article Content" 
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Article Content'"
                 required
                 name="content"
                 formControlName="content"
-                [ngClass]="{'is-invalid': content.touched || content.dirty && !content.errors , 'is-valid': content.valid}">
+                [ngClass]="{'is-invalid-textarea': content.touched || content.dirty && !content.errors , 'is-valid-textarea': content.valid}">
             </textarea>
-        </mat-form-field>
-        <mat-form-field>
             <p>Choose file: </p>
             <input type="file" (change)="getFile($event)">
             <!--<input type="button" value="upload" (click)="uploadFile()">-->
-        </mat-form-field>
         <button type="submit">
             Post
         </button>
