@@ -1,5 +1,7 @@
 <article class="articleDetail">
     <h1 class="articleHeading">{{ article.title }}</h1>
+    <div class="content" class="articleText2">Added by {{ article.author }}</div>
+    <div class="content" class="articleText2">{{ article.category }}</div>
     <div class="image">
         <img [src]="'data:image/jpg;base64,' + article.file" height="340px" width="600px">
     </div>

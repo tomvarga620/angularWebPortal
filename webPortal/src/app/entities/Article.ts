@@ -9,5 +9,4 @@ export class Article {
         public content?: string,
         public id?: number,
         public file?: Blob) {}
-        
 }
