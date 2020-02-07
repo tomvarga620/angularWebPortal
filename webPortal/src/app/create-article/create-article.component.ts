@@ -65,7 +65,6 @@ export class CreateArticleComponent implements OnInit {
       this.data = new FormData();
       this.data.append( 'file', this.file, this.file.name);
       console.log(this.file.name);
-      this.router.navigateByUrl(`/`);
 
     } else {
       this.errorMessage.errorMessage('Wrong type bro!');
