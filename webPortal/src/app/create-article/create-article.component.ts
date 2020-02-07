@@ -91,7 +91,10 @@ export class CreateArticleComponent implements OnInit {
 
 
     this.userServerService.postArticle(article)
-      .subscribe(response => this.uploadFile(response.id)
+      .subscribe(response => {
+        this.uploadFile(response.id);
+        this.router.navigateByUrl('/');
+        }
     );
   }
 }
