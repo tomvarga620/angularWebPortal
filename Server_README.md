@@ -4,5 +4,6 @@ How to run server on PC.
 2. You must import sector.sql Database to mysql:
    - create database with name sector
    - import sector.sql file
+   - database user root without password
 3. Click to "Run" main "unamed" class (com.sector.server.ServerApplication).
 
